@@ -4,10 +4,11 @@
 
 - [@RahaviSelvarajan](https://github.com/RahaviSelvarajan)
 - [@Jana-kabrit](https://github.com/Jana-kabrit)
+- [@ZixiongLin1](https://github.com/ZixiongLin1)
 
 ## 📝 Goal/Objective:
 
-- To create a python module which can be imported into projects and used for assessing the quality of video files.
+- To create a python module which can be imported into projects and used for assessing the quality of video, audio, and sensor data.
 
 ## 🛠 Requirements
 
@@ -26,13 +27,13 @@
 Clone the repository into your project directory using the following command.
 
 ```bash
-git clone https://github.com/aid4mh/Qcheck.git
+git clone https://github.com/aid4mh/QA-module.git
 ```
 
-Now import the Qcheck module for QA metrics calculation.
+Now import the QA-module module for QA metrics calculation.
 
 ```bash
-import module as qamod
+import QA-module as qamod
 ```
 
 ### Use case 1 - accel data (all metrics)
@@ -51,7 +52,9 @@ qamod.irlr(data_file=”/path/accel/file”) -> return IRLR value/s
 
 In this module, we have defined 9 functions for different quality assessment metrics. The table below explains what each function is by its input and output.
 
-### 🎥 Video Functions:
+### 🎥 Video QA:
+
+#### Functions
 
 | Function                       | Input                                                                                                                                           | Output                                                                                                             |
 | :----------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------- |
@@ -68,7 +71,9 @@ In this module, we have defined 9 functions for different quality assessment met
 
 ...TBA once the structure of the pipeline is decided upon (class/function). It will return a CSV file that contains the results of all the metrics for one/more than 1 data path.
 
-### 🎙 Audio Functions:
+### 🎙 Audio QA:
+
+#### Functions:
 
 | Function                | Input                                                                                                                                                  | Output                                                                                                          |
 | :---------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
@@ -76,7 +81,7 @@ In this module, we have defined 9 functions for different quality assessment met
 | `get_audio_array(path)` | **path** `str`: path to a specific audio                                                                                                               | **audio frame rate** `int`: the frame rate of the audio, **samples** `arr` the array representing the audio<br> |
 | `get_array_audio(path)` | **path** `str`: path to a specific audio <br> **frames** `int`: the framerate of the audio <br> **samples** `arr` the array to be transformed to audio | **audio frame rate** `int`: the frame rate of the audio, **samples** `arr` the array representing the audio<br> |
 
-### 🌡 Sensor Functions
+### 🌡 Sensor QA
 
 #### :book: Glossary
 
@@ -94,7 +99,7 @@ An explanation of the metrics supported for sensor QA:
 | `SRC`  | Sampling Rate Consistency - Uniformness of the sampling rate within and across records.                     | Consistency  |
 | `VRC`  | Value Range Consistency - Uniformness of the value range within and across records.                         | Consistency  |
 
-### Sensor Functions
+#### Sensor Functions
 
 | Function                     | Input                                                                                     | Output |
 | :--------------------------- | :---------------------------------------------------------------------------------------- | :----- |
