@@ -330,7 +330,12 @@ class DQM_single_file:
     
     def set_input_path(self, path:str):
         """
-        Set the path of input file.
+        Set the path of input record file.
+
+        Parameters
+        ----------
+        path : str
+            Path to the input record file
         """
         self.input_path = path
     
@@ -413,7 +418,7 @@ class DQM_single_file:
     
     def compute_DQM(self):
         """
-        Compute the DQMs for current configuration.
+        Compute the DQM for input record under current metrics configuration.
         Must call set_input_path before calling this method.
         """
         self.score = []
@@ -447,22 +452,21 @@ class DQM_single_file:
     
     def get_fields(self):
         """
-        Return a list represents the current included info in DQM.
+        Return a list represents the current included metrics in DQM.
         compute_DQM must be called before this method.
         """
         return self.fields
 
     def get_IRLR(self):
         """
-        Return the IRLR score for given input data as a dict {user_ID: user_IRLR}.
-        IRLR must be included in the DQM class.
+        Return the IRLR score for given input data as str.
         """
         IRLR_index = self.fields.index('IRLR')
         return self.score[IRLR_index]
     
     def get_SNR(self):
         """
-        Return the SNR score for given input data as a dict {user_ID: user_SNR}.
+        Return the SNR score for given input data as a str.
         SNR must be included in the DQM class.
         """
         SNR_index = self.fields.index('SNR')
@@ -472,7 +476,7 @@ class DQM_single_file:
     
     def get_SCR(self):
         """
-        Return the SCR score for given input data as a dict {user_ID: user_SCR}.
+        Return the SCR score for given input data as a str.
         SCR must be included in the DQM class.
         """
         SCR_index = self.fields.index('SCR')
@@ -482,7 +486,7 @@ class DQM_single_file:
     
     def get_SRC(self):
         """
-        Return the SRC score for given input data as a dict {user_ID: user_SRC}.
+        Return the SRC score for given input data as a str.
         SRC must be included in the DQM class.
         """
         SRC_index = self.fields.index('SRC')
@@ -492,7 +496,7 @@ class DQM_single_file:
     
     def get_MDR(self):
         """
-        Return the MDR score for given input data as a dict {user_ID: user_MDR}.
+        Return the MDR score for given input data as a str.
         MDR must be included in the DQM class.
         """
         MDR_index = self.fields.index('MDR')
@@ -502,7 +506,7 @@ class DQM_single_file:
     
     def get_APD(self):
         """
-        Return the APD score for given input data as a dict {user_ID: user_APD}.
+        Return the APD score for given input data as a str.
         APD must be included in the DQM class.
         """
         APD_index = self.fields.index('APD')
@@ -512,13 +516,13 @@ class DQM_single_file:
     
     def save_to_file(self, path:str):
         """
-        Save the computed DQMs as a csv file to the set output path.
-        Must call set_output_path and compute DQMs before calling this.
+        Save the computed DQM as a csv file to the given output path.
+        Must call compute_DQM before calling this.
 
         Parameters
         ----------
         path : str
-            Path to the result file
+            Path to the output file
         
         """
         self.output_path = path
@@ -633,7 +637,7 @@ class DQM_multiple_file:
     
     def compute_DQM(self):
         """
-        Compute the DQMs for current configuration.
+        Compute the DQM for input records under current metrics configuration.
         Must call set_input_path before calling this method.
         """
         self.score = []
@@ -667,22 +671,21 @@ class DQM_multiple_file:
     
     def get_fields(self):
         """
-        Return a list represents the current included info in DQM.
+        Return a list represents the current included metrics in DQM.
         compute_DQM must be called before this method.
         """
         return self.fields
 
     def get_IRLR(self):
         """
-        Return the IRLR score for given input data as a dict {user_ID: user_IRLR}.
-        IRLR must be included in the DQM class.
+        Return the IRLR score for given input data as a str.
         """
         IRLR_index = self.fields.index('IRLR')
         return self.score[IRLR_index]
     
     def get_SNR(self):
         """
-        Return the SNR score for given input data as a dict {user_ID: user_SNR}.
+        Return the SNR score for given input data as a str.
         SNR must be included in the DQM class.
         """
         SNR_index = self.fields.index('SNR')
@@ -692,7 +695,7 @@ class DQM_multiple_file:
     
     def get_SCR(self):
         """
-        Return the SCR score for given input data as a dict {user_ID: user_SCR}.
+        Return the SCR score for given input data as a str.
         SCR must be included in the DQM class.
         """
         SCR_index = self.fields.index('SCR')
@@ -702,7 +705,7 @@ class DQM_multiple_file:
     
     def get_SRC(self):
         """
-        Return the SRC score for given input data as a dict {user_ID: user_SRC}.
+        Return the SRC score for given input data as a str.
         SRC must be included in the DQM class.
         """
         SRC_index = self.fields.index('SRC')
@@ -712,7 +715,7 @@ class DQM_multiple_file:
     
     def get_MDR(self):
         """
-        Return the MDR score for given input data as a dict {user_ID: user_MDR}.
+        Return the MDR score for given input data as a str.
         MDR must be included in the DQM class.
         """
         MDR_index = self.fields.index('MDR')
@@ -722,7 +725,7 @@ class DQM_multiple_file:
     
     def get_APD(self):
         """
-        Return the APD score for given input data as a dict {user_ID: user_APD}.
+        Return the APD score for given input data as a str.
         APD must be included in the DQM class.
         """
         APD_index = self.fields.index('APD')
@@ -732,7 +735,7 @@ class DQM_multiple_file:
     
     def get_RLC(self):
         """
-        Return the RLC score for given input data as a dict {user_ID: user_APD}.
+        Return the RLC score for given input data as a str.
         RLC must be included in the DQM class.
         """
         RLC_index = self.fields.index('RLC')
@@ -742,7 +745,7 @@ class DQM_multiple_file:
     
     def get_VRC(self):
         """
-        Return the VRC score for given input data as a dict {user_ID: user_VRC}.
+        Return the VRC score for given input data as a str.
         VRC must be included in the DQM class.
         """
         VRC_index = self.fields.index('VRC')
@@ -752,13 +755,13 @@ class DQM_multiple_file:
     
     def save_to_file(self, path:str):
         """
-        Save the computed DQMs as a csv file to the set output path.
-        Must call set_output_path and compute DQMs before calling this.
+        Save the computed DQM as a csv file to the given output path.
+        Must call compute_DQM before calling this.
 
         Parameters
         ----------
         path : str
-            Path to the result file
+            Path to the output file
         
         """
         self.output_path = path
