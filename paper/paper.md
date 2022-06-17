@@ -5,7 +5,9 @@ tags:
 - Video QA
 - Audio QA
 - Sensor QA
-  authors:
+
+authors:
+
 - name: Jana Kabrit
   equal-contrib: true
   affiliation: 1
@@ -15,7 +17,9 @@ tags:
 - name: Zixiong Lin
   corresponding: true
   affiliation: "1, 2"
-  affiliations:
+
+affiliations:
+
 - name: AID4MH, CAMH, KNCI, Intern
   index: 1
 - name: University of Toronto
