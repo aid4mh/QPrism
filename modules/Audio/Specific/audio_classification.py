@@ -6,7 +6,21 @@ from scipy import signal
 from scipy.io import wavfile
 
 
-def audio_classification(wav_file_name):
+def audio_classification(wav_path):
+    """
+    Get a list of all the sounds in an audio
+
+    This function returns a list of all the prominent sounds inside the audio
+
+    Parameters
+    -----------
+    wav_path : path to a .wav audio
+
+    Returns
+    -------
+    list: all sounds in an audio
+        ['Speech', 'Whistling', 'Alarm']
+    """
 
     model = hub.load('https://tfhub.dev/google/yamnet/1')
 
@@ -32,7 +46,7 @@ def audio_classification(wav_file_name):
             waveform = signal.resample(waveform, desired_length)
         return desired_sample_rate, waveform
 
-    sample_rate, wav_data = wavfile.read(wav_file_name, 'rb')
+    sample_rate, wav_data = wavfile.read(wav_path, 'rb')
     sample_rate, wav_data = ensure_sample_rate(sample_rate, wav_data)
 
     waveform = wav_data / tf.int16.max
@@ -45,4 +59,4 @@ def audio_classification(wav_file_name):
     infered_class = []
     for indi in ind[0]:
         infered_class.append(class_names[indi])
-    return(print(f'The main sounds are: {infered_class}'))
+    return(print(infered_class))
