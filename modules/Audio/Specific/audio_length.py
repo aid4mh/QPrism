@@ -5,7 +5,7 @@ def sample_rate(wav_path):
     """
     Get the length of an audio
 
-    This function stores the paths of a wav audio file and returns its length
+    This function takes the path of a wav audio file and returns its length
 
     Parameters
     -----------
