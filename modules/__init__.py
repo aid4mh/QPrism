@@ -2,16 +2,16 @@ import os
 
 from pathlib import Path
 
-from modules.Audio.audio_classification import audio_classification
-from modules.Audio.audio_length import audio_length
-from modules.Audio.audio_paths import audio_paths
-from modules.Audio.audio_sample_rate import sample_rate
-from modules.Audio.audio_to_array import aud_to_array
+# from modules.Audio.audio_classification import audio_classification
+# from modules.Audio.audio_length import audio_length
+# from modules.Audio.audio_paths import audio_paths
+# from modules.Audio.audio_sample_rate import sample_rate
+# from modules.Audio.audio_to_array import aud_to_array
 from modules.Audio.extract_audios import extract_audios
-from modules.Audio.mp3_to_wav import mp3_to_wav
+# from modules.Audio.mp3_to_wav import mp3_to_wav
 # from modules.Audio.noise_reduction import reduce_noise
-from modules.Audio.punctuator import punctuate
-from modules.Audio.speechtotext import audio_translate
+# from modules.Audio.punctuator import punctuate
+# from modules.Audio.speechtotext import audio_translate
 
 from modules.Video.bit_rate import bitrate
 from modules.Video.brightness import brightness
@@ -152,7 +152,7 @@ class Video:
                 if not os.path.isfile(audio_path):
                     print("Audio file not found!!!")
                     print("Extracting audio from video")
-                    get_audio(file)
+                    extract_audios(file)
                 bps[video_name] = bitrate(file, audio_path)
 
             return bps
@@ -164,7 +164,7 @@ class Video:
             if not os.path.isfile(audio_path):
                 print("Audio file not found!!!")
                 print("Extracting audio from video")
-                get_audio(path)
+                extract_audios(path)
 
             return bitrate(path, audio_path)
 
@@ -230,7 +230,7 @@ class Video:
             return fps(path)
 
 
-    def get_brightness(self, path:str):
+    def brightness(self, path:str):
         """
         This function gives the brightness of a single video file or a folder containing the videos
 
