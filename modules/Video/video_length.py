@@ -1,6 +1,6 @@
 import cv2 
 
-from Qcheck.frame_rate import fps
+from modules.Video.frame_rate import fps
 
 
 def video_length(video_path):

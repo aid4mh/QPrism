@@ -1,7 +1,7 @@
 from scipy.io import wavfile
 
 
-def sample_rate(wav_path):
+def audio_length(wav_path):
     """
     Get the length of an audio
 
