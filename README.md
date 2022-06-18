@@ -36,7 +36,7 @@ A python module which can be imported into projects and used for assessing the q
 
 
 # Authors
-
+- [@Ramzi Halabi](https://github.com/RamziHalabi)
 - [@RahaviSelvarajan](https://github.com/RahaviSelvarajan)
 - [@Jana-kabrit](https://github.com/Jana-kabrit)
 - [@ZixiongLin1](https://github.com/ZixiongLin1)
