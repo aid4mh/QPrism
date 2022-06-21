@@ -3,7 +3,7 @@ from os import path
 from pydub import AudioSegment
 
 
-def mp3_to_wav(mp3_path):
+def mp3_wav(mp3_path):
     """
     Convert mp3 files to mono wav files
 

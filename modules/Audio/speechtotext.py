@@ -28,7 +28,7 @@ def audio_translate(audio_name):
         os.makedirs(chunks_folder, exist_ok=True)
         
         # Convert to .wav format
-        sound = AudioSegment.from_mp3(os.path.join("audio_files", audio_name))
+        sound = AudioSegment.from_mp3(audio_name)
         sound.export("audio.wav", format="wav")
 
         # Split the large audio file into smaller chunks

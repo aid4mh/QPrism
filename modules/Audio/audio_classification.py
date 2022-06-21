@@ -59,4 +59,4 @@ def audio_classification(wav_path):
     infered_class = []
     for indi in ind[0]:
         infered_class.append(class_names[indi])
-    return(print(infered_class))
+    return infered_class
