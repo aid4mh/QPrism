@@ -61,7 +61,7 @@ def load_data_pd(path):
 
 def load_data_pd_single_file(path):
     try:
-        record_df = pd.read_json(path)
+        record_df = (pd.read_json(path))['records']
     except:
         record_df = pd.DataFrame([])
     return record_df

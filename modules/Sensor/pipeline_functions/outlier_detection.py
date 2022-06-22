@@ -69,7 +69,7 @@ def count_outliers(record, feature_names, scaler, outlier_policy):
     #for feature in feature_names:
     #    if scaler == 'standard':
     #        record[feature] = standard_scaler(record[feature], [feature])
-    record = normalize_timestamp(record)
+    record = normalize_timestamp(record, ((list(record.keys()))[0]))
     record = features_to_float(record, feature_names)
     record = multi_var_to_uni(record, feature_names)
     decision_scores = detect_outliers(record, feature_names, 'FeatureBagging')
@@ -77,6 +77,7 @@ def count_outliers(record, feature_names, scaler, outlier_policy):
     record['decision_scores'] = decision_scores
     outlier_locations = outlier_counts(decision_scores, outlier_policy)
     return len(outlier_locations)/len(record), outlier_locations
+
 
 def count_anomalous_segments(changepoints, outlier_locations, record_set):
     fail = 0

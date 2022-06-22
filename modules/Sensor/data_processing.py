@@ -2,25 +2,9 @@ import pandas as pd
 import numpy as np
 
 
-def get_feature_name(sensor):
-    """
-    Input:
-        sensor: A list of dataframes represents a sensor
-    Return:
-        keys: A list of str represents the feature name of given sensor
-    """
-    # return -1 if the sensor has no record
-    if len(sensor)==0:
-        return -1
-    record_df = sensor[0]
-    keys = list(record_df["records"][0].keys())
-    keys.remove('timestamp')
-    return keys
-
-
 def get_feature_name_record_df(record_df):
-    keys = list(record_df["records"][0].keys())
-    keys.remove('timestamp')
+    keys = list(record_df[0].keys())
+    keys.remove(keys[0])
     return keys
 
 
@@ -32,9 +16,8 @@ def record_df_to_dict(record_df):
         A list of dict, each dict is a single record
     """
     if len(record_df!=0):
-        record = record_df['records']
         record_list = []
-        for single_record in record:
+        for single_record in record_df:
             record_list.append(dict(single_record))
         return record_list
     else:

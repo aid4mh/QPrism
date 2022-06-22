@@ -7,25 +7,27 @@ def standard_scaler(col, feature_names):
         return scaler.fit_transform(X=col.to_numpy().reshape(-1, 1))
     except:
         for key in list(feature_names):
-            if key != 'timestamp':
-                new_vals = scaler.fit_transform(X= np.asarray([c[key] for c in col]).reshape(-1, 1))
-                for i, val in enumerate(new_vals):
-                    col[i][key] = val[0]
+            new_vals = scaler.fit_transform(X= np.asarray([c[key] for c in col]).reshape(-1, 1))
+            for i, val in enumerate(new_vals):
+                col[i][key] = val[0]
         return col
-        
-def normalize_timestamp(record):
+
+
+def normalize_timestamp(record, time_keyname):
     try:
-        record['timestamp'] = record['timestamp'] - int(record['timestamp'].iloc[0])
+        record[time_keyname] = record[time_keyname] - int(record[time_keyname].iloc[0])
         return record
     except:
-        start = record[0]['timestamp']
+        start = record[0][time_keyname]
         for i in range(len(record)):
-            record[i]['timestamp'] =  record[i]['timestamp']- start
+            record[i][time_keyname] =  record[i][time_keyname]- start
         return record
-def min_max_scaler(col):
 
+
+def min_max_scaler(col):
     scaler = MinMaxScaler()
     return scaler.fit_transform(X=col.to_numpy().reshape(-1, 1))
+
 
 def multi_var_to_uni(record, cols):
     try:

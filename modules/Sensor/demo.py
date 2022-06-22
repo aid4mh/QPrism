@@ -1,4 +1,5 @@
-from DQM import DQM, DQM_single_file
+from DQM import DQM_multiple_file, DQM_single_file
+from load_data import *
 
 
 if __name__ == '__main__':
@@ -23,6 +24,12 @@ if __name__ == '__main__':
     print(dqm_obj.get_APD())"""
     #dqm_obj.save_to_file('/home/lin/Documents/CAMH/SenseActivity/data/result_extreme.csv')
     single_file_dqm = DQM_single_file()
-    single_file_dqm.set_input_path('/home/lin/Documents/CAMH/SenseActivity/data/Test/SUBJ00001/Accelerometer/SUBJ00001_Accelerometer_REC000000.json')
+    df = load_data_pd_single_file('/home/lin/Documents/CAMH/SenseActivity/data/Test/SUBJ00001/Accelerometer/SUBJ00001_Accelerometer_REC000000.json')
+    single_file_dqm.set_input_record(df)
     single_file_dqm.compute_DQM()
-    print(single_file_dqm.get_IRLR())
+    print(single_file_dqm.get_DQM())
+    multi_file_dqm = DQM_multiple_file()
+    df_list = load_data_pd_multi_file('/home/lin/Documents/CAMH/SenseActivity/data/Test/SUBJ00001/Accelerometer')
+    multi_file_dqm.set_input_data(df_list)
+    multi_file_dqm.compute_DQM()
+    print(multi_file_dqm.get_DQM())
