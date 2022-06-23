@@ -28,4 +28,5 @@ def reduce_noise(wav_path):
     cleaned_name = Path(audio_name + "_cleaned.wav")
     absmax = np.max(np.abs(reduced_noise))
     data32 = (reduced_noise/absmax).astype(np.float32)
+    print("Saved to ", cleaned_name)
     write(cleaned_name, int(rate), data32)
