@@ -10,7 +10,7 @@ from modules.Audio.audio_sample_rate import sample_rate
 from modules.Audio.audio_to_array import aud_to_array
 from modules.Audio.extract_audios import extract_audios
 from modules.Audio.mp3_to_wav import mp3_wav
-# from modules.Audio.noise_reduction import reduce_noise
+from modules.Audio.noise_reduction import reduce_noise
 from modules.Audio.punctuator import punctuate
 from modules.Audio.speechtotext import audio_translate
 
@@ -208,7 +208,34 @@ class Audio:
             return sounds
         
         else:
-            return audio_classification(file)
+            return audio_classification(path)
+
+    
+    def noise_reduce(self, path:str):
+        """
+        Remove the background noise of an audio
+
+        This function takes the path of a wav audio file and saves a new one with no background noise using non-stationary noise reduction
+
+        Parameters
+        -----------
+        wav_path : path of a .wav audio
+
+        Returns
+        -------
+        NONE
+            saves the cleaned .wav audio in the working directory
+            "example_cleaned.wav"
+        """
+        if os.path.isdir(path):
+            audio_files = audio_paths(path)
+
+            for file in audio_files:
+                reduce_noise(file)
+        
+        else:
+            reduce_noise(path)
+
 
 
 class Video:
