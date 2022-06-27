@@ -7,7 +7,7 @@ from modules.Audio.audio_classification import audio_classification
 from modules.Audio.audio_length import audio_length
 from modules.Audio.audio_paths import audio_paths
 from modules.Audio.audio_sample_rate import sample_rate
-from modules.Audio.audio_to_array import aud_to_array
+# from modules.Audio.audio_to_array import aud_to_array
 from modules.Audio.extract_audios import extract_audios
 from modules.Audio.mp3_to_wav import mp3_wav
 from modules.Audio.noise_reduction import reduce_noise
@@ -23,7 +23,7 @@ from modules.Video.video_format import video_format
 from modules.Video.video_length import video_length
 from modules.Video.video_paths import video_paths
 from modules.Video.video_resolution import video_resolution
-
+from modules.Video.artifacts import noise_detection
 
 class Audio:
     def __init__(self):
@@ -265,6 +265,7 @@ class Video:
 
         if os.path.isdir(path):
             video_files = video_paths(path)
+            print(video_files)
             length = {}
             
             for file in video_files:
@@ -499,3 +500,31 @@ class Video:
             return time
         else:
             return creation_time(path)
+
+    
+    def check_artifacts(self, path:str):
+        """
+        Get how much of the video that contains video artifacts
+
+        This function returns the percentage of the video that contains artifacts (motion blur, too grainy, static)
+
+        Parameters
+        -----------
+        video_path : path to a video
+
+        Returns
+        -------
+        float
+            3.351
+        """
+
+        if os.path.isdir(path):
+            video_files = video_paths(path)
+            percents = {}
+            
+            for file in video_files:
+                percents[file] = noise_detection(file)
+            
+            return percents
+        else:
+            return noise_detection(path)
