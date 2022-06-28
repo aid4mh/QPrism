@@ -41,5 +41,8 @@ def Signal_to_Noise(arr):
 
 def snr(record, feature_names):
     record = features_to_float(record, feature_names)
-    feat_values = [Signal_to_Noise([r[feature] for r in record]) for feature in feature_names]
+    #feat_values = [Signal_to_Noise([r[feature] for r in record]) for feature in feature_names]
+    feat_values = []
+    for feature in feature_names:
+        feat_values.append(Signal_to_Noise(record[feature]))
     return np.mean([f for f in feat_values if not math.isnan(f)])

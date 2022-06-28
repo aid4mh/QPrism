@@ -5,8 +5,7 @@ from pipeline_functions.single_function_DQMs import sampling_rate_consistency
 
 
 def compute_SRC_single(record_df):
-    record_list = record_df_to_dict(record_df)
-    sample_consistence, sample_rate_median, sample_mode = sampling_rate_consistency(record_list)
+    sample_consistence, sample_rate_median, sample_mode = sampling_rate_consistency(record_df)
     return sample_consistence
 
 

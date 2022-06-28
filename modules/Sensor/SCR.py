@@ -6,8 +6,7 @@ from pipeline_functions.single_function_DQMs import channel_completeness
 
 def compute_SCR_single(record_df):
     feature_name = get_feature_name_record_df(record_df)
-    record_list = record_df_to_dict(record_df)
-    SCR = channel_completeness(record_list, feature_name)
+    SCR = channel_completeness(record_df, feature_name)
     return SCR
 
 

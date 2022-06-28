@@ -25,7 +25,7 @@ def get_df_feature_name(df):
     """
     # return -1 if the sensor has no record
     record_df = df
-    keys = list(record_df[0].keys())
+    keys = list(record_df.keys())
     keys.remove(keys[0])
     return keys
 
@@ -34,12 +34,14 @@ def compute_IRLR_single(record_df):
     feature_names = get_df_feature_name(record_df)
     if (len(record_df)<2):
         return 0
-    elif (record_df[len(record_df)-1][(list(record_df[len(record_df)-1].keys()))[0]]-record_df[0][list(record_df[0].keys())[0]])<=0:
+    elif (int(record_df.iloc[[len(record_df)-1]][(list(record_df.keys()))[0]])-int(record_df.iloc[[0]][list(record_df.keys())[0]]))<=0:
         return 0
     else:
-        record_list = record_df_to_dict(record_df)
-        record = features_to_float(record_list, feature_names)
-        std_values = [std_arr([r[feature] for r in record]) for feature in feature_names]
+        #record_list = record_df_to_dict(record_df)
+        record = features_to_float(record_df, feature_names)
+        std_values = []
+        for feature in feature_names:
+            std_values.append(std_arr(record[feature].values))
         for std_value in std_values:
             if (std_value==0):
                 return 0
