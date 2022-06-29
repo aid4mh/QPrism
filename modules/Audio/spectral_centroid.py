@@ -18,6 +18,7 @@ def spectral_centroids(wav_path, graph=False):
     list: list of centriods in each frame
         "[3697.44113997 1783.07014188 1696.00335286 ... 1149.56986893 1089.87566734
  1054.68442024]"
+    graph: displays a graph that shows the centroids
     """
     x, sr = librosa.load(wav_path)
     spectral_centroids = librosa.feature.spectral_centroid(x, sr=sr)[0]
