@@ -1,9 +1,10 @@
 from pathlib import Path
 from os import path
 from pydub import AudioSegment
+import os
 
 
-def mp3_wav(mp3_path):
+def to_mono_wav(aud_path):
     """
     Convert mp3 files to mono wav files
 
@@ -19,9 +20,20 @@ def mp3_wav(mp3_path):
         Saves the .wav file in the same working directory
         "audio_Wav.wav"
     """
-    audio_name = str(Path(mp3_path).stem)
-    wav_name = Path(audio_name + "_Wav.wav")
+    split_tup = os.path.splitext(aud_path)
+    format = (split_tup[-1])
 
-    sound = AudioSegment.from_mp3(mp3_path)
-    sound = sound.set_channels(1)
-    sound.export(wav_name, format="wav")
+    if str(format) == '.wav':
+        sound = AudioSegment.from_wav(aud_path)
+        sound = sound.set_channels(1)
+        audio_name = str(Path(aud_path).stem)
+        wav_name = Path(audio_name + "_Mono.wav")
+        sound.export(wav_name, format="wav")
+    elif str(format) == '.mp3':
+        sound = AudioSegment.from_mp3(aud_path)
+        sound = sound.set_channels(1)
+        audio_name = str(Path(aud_path).stem)
+        wav_name = Path(audio_name + "_Wav.wav")
+        sound.export(wav_name, format="wav")
+    else:
+        "Please enter an .mp3 or .wav file"
