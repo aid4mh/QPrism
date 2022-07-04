@@ -33,9 +33,9 @@ def get_df_feature_name(df):
 def compute_IRLR_single(record_df):
     feature_names = get_df_feature_name(record_df)
     if (len(record_df)<2):
-        return 0
+        return 1
     elif (int(record_df.iloc[[len(record_df)-1]][(list(record_df.keys()))[0]])-int(record_df.iloc[[0]][list(record_df.keys())[0]]))<=0:
-        return 0
+        return 1
     else:
         #record_list = record_df_to_dict(record_df)
         record = features_to_float(record_df, feature_names)
@@ -44,8 +44,8 @@ def compute_IRLR_single(record_df):
             std_values.append(std_arr(record[feature].values))
         for std_value in std_values:
             if (std_value==0):
-                return 0
-    return 1
+                return 1
+    return 0
 
 
 def compute_IRLR_multiple(data_list):
@@ -54,25 +54,13 @@ def compute_IRLR_multiple(data_list):
     delete_list = []
     for i in range (len(data_list)):
         record_df = data_list[i]
-        # remove records has length <= 2
-        if (len(record_df)<2):
-            insufficient_length_count += 1
-            delete_list.append(i)
-        # remove records with same starting and ending timestamp
-        elif (record_df[len(record_df)-1][(list(record_df[len(record_df)-1].keys()))[0]]-record_df[0][list(record_df[0].keys())[0]])<=0:
-            insufficient_length_count += 1
-            delete_list.append(i)
-        # remove records with 0 std or missing channels
+        if (len(record_df)==0):
+            IRLR_single = 1
         else:
-            feature_names = get_df_feature_name(record_df)
-            record_list = record_df_to_dict(record_df)
-            record = features_to_float(record_list, feature_names)
-            std_values = [std_arr([r[feature] for r in record]) for feature in feature_names]
-            for std_value in std_values:
-                if (std_value==0):
-                    insufficient_length_count += 1
-                    delete_list.append(i)
-                    break
+            IRLR_single = compute_IRLR_single(record_df)
+        if (IRLR_single==1):
+            insufficient_length_count += 1
+            delete_list.append(i)
         record_count += 1
     j = 0
     # delete all the insufficient records

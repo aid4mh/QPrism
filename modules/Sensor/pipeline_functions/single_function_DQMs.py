@@ -25,18 +25,25 @@ def mode(vals):
 
 def channel_completeness(record, feature_names):
     record = features_to_float(record, feature_names)
-    channel = [len([r[feature] for r in record]) for feature in feature_names]
+    channel = []
+    for feature in feature_names:
+        channel.append(len(record[feature]))
     return 1 if min(channel) == max(channel) else 0
 
 
 def minmax(record, feature_names):
     record = features_to_float(record, feature_names)
-    return np.mean([np.max([r[feature] for r in record]) - np.min([r[feature] for r in record]) for feature in feature_names])
+    minmax_list = []
+    for single_record in record:
+        minmax_list.append(np.max([single_record[feature] for feature in feature_names])-np.min([single_record[feature] for feature in feature_names]) )
+    print(minmax_list)
+    return np.mean(minmax_list)
+    #return np.mean([np.max([r[feature] for r in record]) - np.min([r[feature] for r in record]) for feature in feature_names])
 
 
 def sampling_rate_consistency(record):
-    record = normalize_timestamp(record, ((list(record[0].keys()))[0]))
-    sampling = [record[i + 1][(list(record[i+1].keys()))[0]] - record[i][(list(record[i].keys()))[0]] for i in range(len(record) - 1)]
+    #record = normalize_timestamp(record, ((list(record.keys()))[0]))
+    sampling = [record.iloc[i+1][(list(record.keys()))[0]] - record.iloc[i][(list(record.keys()))[0]] for i in range(len(record) - 1)]
     sampling_trunc = [round(r, 3) for r in sampling]
     return consistency(sampling), np.median(sampling), mode(sampling_trunc)
 

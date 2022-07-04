@@ -7,7 +7,6 @@ from pipeline_functions.signal_to_noise import *
 def compute_SNR_single(record_df):
     feature_name = get_feature_name_record_df(record_df)
     snr_value = snr(record_df, feature_names=feature_name)
-    print(snr_value)
     return snr_value
 
 

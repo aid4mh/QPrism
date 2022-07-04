@@ -131,7 +131,7 @@ class DQM_single_file:
                 if self.DQM_config[key] is True:
                     self.fields.append(key)
         self.score.append(str(compute_IRLR_single(self.data_list_pd)))
-        if (float(self.score[-1])!=0):
+        if (float(self.score[-1])!=1):
             for key in self.DQM_config.keys():
                 if self.DQM_config[key] is True:
                     self.score.append(str(self.DQM_function[key](self.data_list_pd)))

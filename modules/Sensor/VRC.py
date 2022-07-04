@@ -8,6 +8,5 @@ def compute_VRC_multiple_file(data_list):
     min_max = []
     for record_df in data_list:
         feature_name = get_feature_name_record_df(record_df)
-        record_list = record_df_to_dict(record_df)
-        min_max.append(minmax(record_list, feature_name))
+        min_max.append(minmax(record_df, feature_name))
     return consistency(min_max)

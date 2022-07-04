@@ -6,7 +6,7 @@ from pipeline_functions.single_function_DQMs import *
 
 
 def compute_MDR_single(record_df):
-    r_time = record_df[len(record_df)-1][(list(record_df[len(record_df)-1].keys()))[0]]-record_df[0][list(record_df[0].keys())[0]]
+    r_time = record_df.iloc[-1][(list(record_df.keys()))[0]] - record_df.iloc[0][(list(record_df.keys()))[0]]
     feature_name = get_feature_name_record_df(record_df)
     sample_consistence, sample_rate_median, sample_mode = sampling_rate_consistency(record_df)
     record_df = standard_scaler(record_df, feature_name)

@@ -17,7 +17,10 @@ def load_data_pd_multi_file(path):
     records = os.listdir(path)
     for record in records:
         record_path = path+'/'+record
-        data_list.append(load_data_pd_single_file(record_path))
+        try:
+            data_list.append(load_data_pd_single_file(record_path))
+        except:
+            data_list.append(pd.DataFrame())
     return data_list
 
 
