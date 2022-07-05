@@ -34,9 +34,8 @@ def channel_completeness(record, feature_names):
 def minmax(record, feature_names):
     record = features_to_float(record, feature_names)
     minmax_list = []
-    for single_record in record:
-        minmax_list.append(np.max([single_record[feature] for feature in feature_names])-np.min([single_record[feature] for feature in feature_names]) )
-    print(minmax_list)
+    for feature in feature_names:
+        minmax_list.append(record[feature].max()-record[feature].min())
     return np.mean(minmax_list)
     #return np.mean([np.max([r[feature] for r in record]) - np.min([r[feature] for r in record]) for feature in feature_names])
 
@@ -49,7 +48,7 @@ def sampling_rate_consistency(record):
 
 
 def count_missing_segments(record, sample_mode):
-    missing_segment_count = 0
+    """missing_segment_count = 0
     inserts = []
     missing_amount = 0
     for i, r in enumerate(record[:-1]):
@@ -60,4 +59,9 @@ def count_missing_segments(record, sample_mode):
     for count, i in enumerate(inserts):
         record = record[:i + 1 + count * 20] + [{'univariate_value': 0, 'inserted': True}] * 20 + record[i + 1 + count * 20:]
 
-    return missing_amount, missing_segment_count, record
+    return missing_amount, missing_segment_count, record"""
+    missing_amount = 0
+    for i in range(record.shape[0]-1):
+        if (record.iloc[i+1][(list(record.keys()))[0]] - record.iloc[i][(list(record.keys()))[0]]) > (sample_mode*20):
+            missing_amount += (record.iloc[i+1][(list(record.keys()))[0]] - record.iloc[i][(list(record.keys()))[0]])
+    return missing_amount
