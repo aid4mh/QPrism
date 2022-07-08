@@ -31,13 +31,12 @@ def get_df_feature_name(df):
 
 
 def compute_IRLR_single(record_df):
-    feature_names = get_df_feature_name(record_df)
-    if (len(record_df)<2):
+    if (record_df.shape[0]<2):
         return 1
-    elif (int(record_df.iloc[[len(record_df)-1]][(list(record_df.keys()))[0]])-int(record_df.iloc[[0]][list(record_df.keys())[0]]))<=0:
+    elif (float(record_df.iloc[[len(record_df)-1]][(list(record_df.keys()))[0]])-float(record_df.iloc[[0]][list(record_df.keys())[0]]))<=0:
         return 1
     else:
-        #record_list = record_df_to_dict(record_df)
+        feature_names = get_df_feature_name(record_df)
         record = features_to_float(record_df, feature_names)
         std_values = []
         for feature in feature_names:

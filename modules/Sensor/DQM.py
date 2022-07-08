@@ -30,7 +30,7 @@ class DQM_single_file:
         self.loading_etime = None
         self.computing_etime = None
     
-    def set_input_record(self, df:pd.DataFrame):
+    def set_input_data(self, df:pd.DataFrame):
         """
         Set the path of input record file.
 

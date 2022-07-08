@@ -3,6 +3,9 @@ import os
 from pathlib import Path
 from punctuator import Punctuator
 
+from modules.Sensor.DQM import *
+from modules.Sensor.load_data import *
+
 from modules.Audio.audio_classification import audio_classification
 from modules.Audio.audio_length import audio_length
 from modules.Audio.audio_paths import audio_paths
