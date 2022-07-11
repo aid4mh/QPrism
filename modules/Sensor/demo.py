@@ -1,10 +1,11 @@
 from DQM import DQM_multiple_file, DQM_single_file
 from load_data import *
+import pandas as pd
 
 
 if __name__ == '__main__':
     #dqm_obj.save_to_file('/home/lin/Documents/CAMH/SenseActivity/data/result_extreme.csv')
-    single_file_dqm = DQM_single_file()
+    """single_file_dqm = DQM_single_file()
     df = load_data_json_single_file('/home/lin/Documents/CAMH/SenseActivity/data/Test/SUBJ00001/Accelerometer/SUBJ00001_Accelerometer_REC000000.json')
     single_file_dqm.set_input_data(df)
     single_file_dqm.compute_DQM()
@@ -27,4 +28,10 @@ if __name__ == '__main__':
     multi_csvfile_dqm.set_input_data(df_list)
     multi_csvfile_dqm.compute_DQM()
     print(multi_csvfile_dqm.get_fields())
-    print(multi_csvfile_dqm.get_DQM())
+    print(multi_csvfile_dqm.get_DQM())"""
+    single_file_dqm = DQM_single_file()
+    df = load_data_json_single_file('/home/lin/Documents/CAMH/SenseActivity/data/Test/SUBJ00001/Accelerometer/SUBJ00001_Accelerometer_REC000000.json')
+    single_file_dqm.set_input_data(df)
+    single_file_dqm.compute_DQM()
+    print(single_file_dqm.get_fields())
+    print(single_file_dqm.get_DQM())

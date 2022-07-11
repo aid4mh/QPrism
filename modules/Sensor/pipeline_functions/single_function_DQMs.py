@@ -60,8 +60,8 @@ def count_missing_segments(record, sample_mode):
         record = record[:i + 1 + count * 20] + [{'univariate_value': 0, 'inserted': True}] * 20 + record[i + 1 + count * 20:]
 
     return missing_amount, missing_segment_count, record"""
-    missing_amount = 0
+    missing_points = 0
     for i in range(record.shape[0]-1):
-        if (record.iloc[i+1][(list(record.keys()))[0]] - record.iloc[i][(list(record.keys()))[0]]) > (sample_mode*20):
-            missing_amount += (record.iloc[i+1][(list(record.keys()))[0]] - record.iloc[i][(list(record.keys()))[0]])
-    return missing_amount
+        if (record.iloc[i+1][(list(record.keys()))[0]] - record.iloc[i][(list(record.keys()))[0]]) >= (2*sample_mode):
+            missing_points += (record.iloc[i+1][(list(record.keys()))[0]] - record.iloc[i][(list(record.keys()))[0]] - sample_mode) // sample_mode
+    return missing_points/(record.shape[0]+missing_points)
