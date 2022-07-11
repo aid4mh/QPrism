@@ -66,6 +66,6 @@ def compute_IRLR_multiple(data_list):
     for index in delete_list:
         del data_list[index-j]
         j += 1
-    return insufficient_length_count/record_count
+    return (record_count-insufficient_length_count)/record_count
 
 

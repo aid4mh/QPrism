@@ -20,15 +20,28 @@ def consistency(data):
 
 
 def mode(vals):
-    return Counter(vals).most_common(1)[0][0]
+    if (len(np.unique(vals))!=len(vals)):
+        return Counter(vals).most_common(1)[0][0]
+    elif (len(vals)<=1):
+        return Counter(vals).most_common(1)[0][0]
+    else:
+        mean = np.mean(vals)
+        std = np.std(vals)
+        non_outlier_vals = []
+        for val in vals:
+            if (val < (mean+(3*std))) and ((val > (mean-(3*std)))):
+                non_outlier_vals.append(val)
+        return min(non_outlier_vals)
 
 
 def channel_completeness(record, feature_names):
     record = features_to_float(record, feature_names)
-    channel = []
+    incomplete_channel = 0
+    channel_num = len(feature_names)
     for feature in feature_names:
-        channel.append(len(record[feature]))
-    return 1 if min(channel) == max(channel) else 0
+        if (record[feature].isna().sum() > 0):
+            incomplete_channel += 1
+    return (channel_num-incomplete_channel)/channel_num
 
 
 def minmax(record, feature_names):
