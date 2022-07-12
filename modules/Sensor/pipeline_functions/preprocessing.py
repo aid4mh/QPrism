@@ -30,12 +30,7 @@ def min_max_scaler(col):
 
 
 def multi_var_to_uni(record, cols):
-    try:
-        for i, r in enumerate(record):
-            record[i]['univariate_value'] = np.sqrt(sum([r[c]**2 for c in cols]))
-    except:
-        
-        record['univariate_value'] = np.sqrt(np.square(record[cols]).sum(axis=1))
+    record['univariate_value'] = np.sqrt(np.square(record[cols]).sum(axis=1))
     return record
 
 

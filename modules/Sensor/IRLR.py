@@ -31,13 +31,12 @@ def get_df_feature_name(df):
 
 
 def compute_IRLR_single(record_df):
-    feature_names = get_df_feature_name(record_df)
-    if (len(record_df)<2):
+    if (record_df.shape[0]<2):
         return 0
-    elif (int(record_df.iloc[[len(record_df)-1]][(list(record_df.keys()))[0]])-int(record_df.iloc[[0]][list(record_df.keys())[0]]))<=0:
+    elif (float(record_df.iloc[[len(record_df)-1]][(list(record_df.keys()))[0]])-float(record_df.iloc[[0]][list(record_df.keys())[0]]))<=0:
         return 0
     else:
-        #record_list = record_df_to_dict(record_df)
+        feature_names = get_df_feature_name(record_df)
         record = features_to_float(record_df, feature_names)
         std_values = []
         for feature in feature_names:
@@ -54,38 +53,19 @@ def compute_IRLR_multiple(data_list):
     delete_list = []
     for i in range (len(data_list)):
         record_df = data_list[i]
-        # remove records has length <= 2
-        if (len(record_df)<2):
-            insufficient_length_count += 1
-            delete_list.append(i)
-        # remove records with same starting and ending timestamp
-        elif (record_df[len(record_df)-1][(list(record_df[len(record_df)-1].keys()))[0]]-record_df[0][list(record_df[0].keys())[0]])<=0:
-            insufficient_length_count += 1
-            delete_list.append(i)
-        # remove records with 0 std or missing channels
+        if (len(record_df)==0):
+            IRLR_single = 0
         else:
-            feature_names = get_df_feature_name(record_df)
-            record_list = record_df_to_dict(record_df)
-            record = features_to_float(record_list, feature_names)
-            std_values = [std_arr([r[feature] for r in record]) for feature in feature_names]
-            for std_value in std_values:
-                if (std_value==0):
-                    insufficient_length_count += 1
-                    delete_list.append(i)
-                    break
+            IRLR_single = compute_IRLR_single(record_df)
+        if (IRLR_single==0):
+            insufficient_length_count += 1
+            delete_list.append(i)
         record_count += 1
     j = 0
     # delete all the insufficient records
     for index in delete_list:
         del data_list[index-j]
         j += 1
-    return 1-(insufficient_length_count/record_count)
+    return (record_count-insufficient_length_count)/record_count
 
 
-if __name__ == '__main__':
-    stime_pd = time.time()
-    data_list_pd = load_data_pd_single_file('/home/lin/Documents/CAMH/SenseActivity/data/Test/SUBJ00001/Accelerometer/SUBJ00001_Accelerometer_REC000000.json')
-    etime_pd = time.time()
-    print("The processing time for load data into pandas is: " + str(etime_pd-stime_pd) + ' seconds.')
-    # testing IRLR
-    print("The IRLR score is: " + str(compute_IRLR_single(data_list_pd)))

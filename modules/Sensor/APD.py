@@ -6,7 +6,7 @@ from pipeline_functions.outlier_detection import count_outliers
 
 def compute_APD_single(record_df):
     feature_name = get_feature_name_record_df(record_df)
-    outlier_percent, outlier_locations = count_outliers(record_df, feature_name,'standard','2_step')
+    outlier_percent = count_outliers(record_df, feature_name)
     return outlier_percent
 
 

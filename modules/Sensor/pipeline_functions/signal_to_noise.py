@@ -30,6 +30,7 @@ from pipeline_functions.preprocessing import *
   
   
 def Signal_to_Noise(arr):
+    arr = arr[~np.isnan(arr)]
     arr = arr - np.mean(arr)
     arr = np.asarray(arr)
     abs = np.abs(arr)

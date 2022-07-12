@@ -1,18 +1,16 @@
 import pandas as pd
 import numpy as np
 from data_processing import *
-from pipeline_functions.single_function_DQMs import channel_completeness
-
-
-def compute_SCR_single(record_df):
-    feature_name = get_feature_name_record_df(record_df)
-    SCR = channel_completeness(record_df, feature_name)
-    return SCR
-
+from collections import Counter
 
 def compute_SCR_multiple(data_list):
-    SCR_list = []
-    for record in data_list:
-        record_SCR = compute_SCR_single(record)
-        SCR_list.append(record_SCR)
-    return np.mean(SCR_list)
+    channel_num_list = []
+    incomplete_record_count = 0
+    for df in data_list:
+        channel_num_list.append(df.shape[1]-1)
+    mode = Counter(channel_num_list).most_common(1)[0][0]
+    for channel_num in channel_num_list:
+        if channel_num != mode:
+            incomplete_record_count += 1
+    SCR = (len(channel_num_list)-incomplete_record_count)/len(channel_num_list)
+    return SCR

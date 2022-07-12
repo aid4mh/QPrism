@@ -5,11 +5,21 @@ import pandas as pd
 from pathlib import Path
 from punctuator import Punctuator
 
+<<<<<<< HEAD
 # Audio functions
 # from modules.Audio.audio_classification import audio_classification
 # from modules.Audio.audio_length import audio_length
 # from modules.Audio.audio_paths import audio_paths
 # from modules.Audio.audio_sample_rate import sample_rate
+=======
+from modules.Sensor.DQM import *
+from modules.Sensor.load_data import *
+
+from modules.Audio.audio_classification import audio_classification
+from modules.Audio.audio_length import audio_length
+from modules.Audio.audio_paths import audio_paths
+from modules.Audio.audio_sample_rate import sample_rate
+>>>>>>> refs/remotes/origin/main
 # from modules.Audio.audio_to_array import aud_to_array
 # from modules.Audio.mp3_to_wav import mp3_wav
 # from modules.Audio.noise_reduction import reduce_noise

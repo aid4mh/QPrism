@@ -1,0 +1,3 @@
+Video Name,Bit Rate,Brightness,Date of Creation,Frame Rate,Format,Length,Resolution,Objects,Artifacts
+Video2,1142,110.01602235082049,0,29,.mp4,122,1280p,"{'chair', 'umbrella', 'tie', 'dining table', 'teddy bear', 'bottle', 'vase', 'person', 'bird', 'dog', 'cat', 'laptop', 'car', 'sink', 'bed', 'parking meter', 'book', 'cup'}",97.078
+Video1,1369,18.473427599593432,0,29,.mp4,103,1280p,"{'toilet', 'fire hydrant', 'vase', 'person', 'dog', 'mouse', 'cup'}",44.496

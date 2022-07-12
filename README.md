@@ -30,7 +30,13 @@ QPrism is a python module that contains all the functions needed to understand t
 
 | Library                                          | Version         | Installation                                |
 | :-------------------------------------------------- | :-------------- | :------------------------------------------ |
-| [pandas]([https://www.tensorflow.org/versions](https://pandas.pydata.org/docs/getting_started/install.html)) | 1.4.2| `pip install pandas` |
+| [pandas](https://pandas.pydata.org/docs/getting_started/install.html) | 1.4.2| `pip install pandas` |
+| [scipy](https://scipy.org) | 1.8.0 | `pip install scipy`|
+| [numpy](https://numpy.org/)                         | 1.22.4          | `pip install numpy`                         |
+| [scikit-learn](https://scikit-learn.org/stable/) |0.23.2| `pip install scikit-learn` |
+| [pyod](https://pyod.readthedocs.io/en/latest/) |1.0.3| `pip install pyod`|
+| [combo](https://pypi.org/project/combo/)|0.1.3|`pip install combo`|
+
 
  ### Installation: 
       - `Conda`
@@ -124,7 +130,7 @@ output:
 
 ## Demo notebooks
 
-  - sensor demo notebook
+  - [sensor demo notebook](https://github.com/aid4mh/QPrism/tree/main/tests/Sensor)
   - [Video demo notebook](https://github.com/aid4mh/QA-module/blob/main/demo_video.ipynb)
   - audio demo notebook
 
