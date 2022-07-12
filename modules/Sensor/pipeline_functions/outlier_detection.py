@@ -23,6 +23,7 @@ def outlier_counts(decision_scores):
 
  
 def count_outliers(record, feature_names):
+    record = record.copy()
     record = features_to_float(record,feature_names)
     record = pd.DataFrame.from_dict(record)
     #for feature in feature_names:

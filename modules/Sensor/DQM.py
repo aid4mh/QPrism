@@ -7,6 +7,7 @@ from SCR import compute_SCR_multiple
 from SNR import compute_SNR_multiple, compute_SNR_single
 from SRC import compute_SRC_multiple, compute_SRC_single
 from VRC import compute_VRC_multiple_file
+from VDR import compute_VDR_single, compute_VDR_multiple
 import csv
 import time
 import numpy as np
@@ -20,10 +21,10 @@ class DQM_single_file:
         self.output_path = None
         self.score = []
         self.data_list_pd = None
-        self.DQM_config = {'SNR': True, 'SCR': True,
+        self.DQM_config = {'SNR': True, 'VDR': True,
                            'SRC': True, 'MDR': True, 'APD': True}
-        self.DQM_function = {'SNR': compute_SNR_single,
-                             'SCR': compute_SCR_single, 'SRC': compute_SRC_single,
+        self.DQM_function = {'SNR': compute_SNR_single, 'VDR': compute_VDR_single,
+                             'SRC': compute_SRC_single,
                              'MDR': compute_MDR_single, 'APD': compute_APD_single}
         self.fields = ['IRLR']
         self.stime = None
@@ -51,6 +52,17 @@ class DQM_single_file:
             A bool value to indicate whether SNR is included in the result DQM
         """
         self.DQM_config['SNR'] = included
+    
+    def set_VDR(self, included:bool):
+        """
+        Set whether VDR is included as a metric
+
+        Parameters
+        ----------
+        included : bool
+            A bool value to indicate whether VDR is included in the result DQM
+        """
+        self.DQM_config['VDR'] = included
     
     def set_SRC(self, included:bool):
         """
@@ -139,6 +151,16 @@ class DQM_single_file:
             return "Not computed"
         return self.score[SNR_index]
     
+    def get_VDR(self):
+        """
+        Return the VDR score for given input data as a str.
+        VDR must be included in the DQM class.
+        """
+        VDR_index = self.fields.index('VDR')
+        if (VDR_index==-1):
+            return "Not computed"
+        return self.score[VDR_index]
+    
     def get_SCR(self):
         """
         Return the SCR score for given input data as a str.
@@ -207,10 +229,10 @@ class DQM_multiple_file:
         self.score = []
         self.data_list = None
         self.DQM_config = {'SNR': True, 'SCR': True, 'RLC': True, 'VRC': True,
-                           'SRC': True, 'MDR': True, 'APD': True}
+                           'SRC': True, 'MDR': True, 'APD': True, 'VDR': True}
         self.DQM_function = {'SNR': compute_SNR_multiple, 'RLC': compute_RLC_multiple_file,
                              'SCR': compute_SCR_multiple, 'SRC': compute_SRC_multiple, 'VRC': compute_VRC_multiple_file, 
-                             'MDR': compute_MDR_multiple, 'APD': compute_APD_multiple}
+                             'MDR': compute_MDR_multiple, 'APD': compute_APD_multiple, 'VDR': compute_VDR_multiple}
         self.fields = ['IRLR']
         self.stime = None
         self.loading_etime = None
@@ -248,6 +270,17 @@ class DQM_multiple_file:
             A bool value to indicate whether SNR is included in the result DQM
         """
         self.DQM_config['SNR'] = included
+    
+    def set_VDR(self, included:bool):
+        """
+        Set whether VDR is included as a metric
+
+        Parameters
+        ----------
+        included : bool
+            A bool value to indicate whether VDR is included in the result DQM
+        """
+        self.DQM_config['VDR'] = included
     
     def set_VRC(self, included:bool):
         """
@@ -357,6 +390,16 @@ class DQM_multiple_file:
         if (SNR_index==-1):
             return "Not computed"
         return self.score[SNR_index]
+    
+    def get_VDR(self):
+        """
+        Return the VDR score for given input data as a str.
+        VDR must be included in the DQM class.
+        """
+        VDR_index = self.fields.index('VDR')
+        if (VDR_index==-1):
+            return "Not computed"
+        return self.score[VDR_index]
     
     def get_SCR(self):
         """

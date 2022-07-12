@@ -34,14 +34,14 @@ def mode(vals):
         return min(non_outlier_vals)
 
 
-def channel_completeness(record, feature_names):
+def valid_data_ratio(record, feature_names):
     record = features_to_float(record, feature_names)
-    incomplete_channel = 0
-    channel_num = len(feature_names)
+    invalid_data_count = 0
+    total_data_count = 0
     for feature in feature_names:
-        if (record[feature].isna().sum() > 0):
-            incomplete_channel += 1
-    return (channel_num-incomplete_channel)/channel_num
+        invalid_data_count += record[feature].isna().sum()
+        total_data_count += record[feature].shape[0]
+    return (total_data_count-invalid_data_count)/total_data_count
 
 
 def minmax(record, feature_names):

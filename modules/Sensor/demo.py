@@ -16,14 +16,14 @@ if __name__ == '__main__':
     single_csv_file_dqm.set_input_data(df)
     single_csv_file_dqm.compute_DQM()
     print(single_csv_file_dqm.get_fields())
-    print(single_csv_file_dqm.get_DQM())
-    multi_file_dqm = DQM_multiple_file()
+    print(single_csv_file_dqm.get_DQM())"""
+    """multi_file_dqm = DQM_multiple_file()
     df_list = load_data_json_multi_file('/home/lin/Documents/CAMH/SenseActivity/data/Test/SUBJ00001/Accelerometer')
     multi_file_dqm.set_input_data(df_list)
     multi_file_dqm.compute_DQM()
     print(multi_file_dqm.get_fields())
-    print(multi_file_dqm.get_DQM())
-    multi_csvfile_dqm = DQM_multiple_file()
+    print(multi_file_dqm.get_DQM())"""
+    """multi_csvfile_dqm = DQM_multiple_file()
     df_list = load_data_csv_multi_file('/home/lin/Documents/CAMH/SenseActivity/data/csv_data')
     multi_csvfile_dqm.set_input_data(df_list)
     multi_csvfile_dqm.compute_DQM()
@@ -35,12 +35,3 @@ if __name__ == '__main__':
     single_file_dqm.compute_DQM()
     print(single_file_dqm.get_fields())
     print(single_file_dqm.get_DQM())"""
-    multi_file_dqm = DQM_multiple_file()
-    df_list = []
-    df_list.append(pd.read_csv('/home/lin/Documents/CAMH/QA-module/data/sensor/generated_testing_data/SCR_complete_1.csv'))
-    df_list.append(pd.read_csv('/home/lin/Documents/CAMH/QA-module/data/sensor/generated_testing_data/SCR_complete_2.csv'))
-    df_list.append(pd.read_csv('/home/lin/Documents/CAMH/QA-module/data/sensor/generated_testing_data/SCR_incomplete.csv'))
-    multi_file_dqm.set_input_data(df_list)
-    multi_file_dqm.compute_DQM()
-    print(multi_file_dqm.get_fields())
-    print(multi_file_dqm.get_DQM())

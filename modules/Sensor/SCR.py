@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 from data_processing import *
-from pipeline_functions.single_function_DQMs import channel_completeness
 from collections import Counter
 
 def compute_SCR_multiple(data_list):
