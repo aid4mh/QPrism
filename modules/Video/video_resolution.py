@@ -14,11 +14,10 @@ def video_resolution(video_path):
     Returns
     -------
     string
-        '1680 x 840'
+        '1680'
     """
 
     vid = cv2.VideoCapture(video_path)
     height = vid.get(cv2.CAP_PROP_FRAME_HEIGHT)
-    resolution = str(int(height)) + 'p'
-
+    resolution = int(height)
     return resolution

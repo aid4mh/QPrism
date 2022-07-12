@@ -5,21 +5,14 @@ import pandas as pd
 from pathlib import Path
 from punctuator import Punctuator
 
-<<<<<<< HEAD
+# from modules.Sensor.DQM import *
+# from modules.Sensor.load_data import *
+
 # Audio functions
 # from modules.Audio.audio_classification import audio_classification
 # from modules.Audio.audio_length import audio_length
 # from modules.Audio.audio_paths import audio_paths
 # from modules.Audio.audio_sample_rate import sample_rate
-=======
-from modules.Sensor.DQM import *
-from modules.Sensor.load_data import *
-
-from modules.Audio.audio_classification import audio_classification
-from modules.Audio.audio_length import audio_length
-from modules.Audio.audio_paths import audio_paths
-from modules.Audio.audio_sample_rate import sample_rate
->>>>>>> refs/remotes/origin/main
 # from modules.Audio.audio_to_array import aud_to_array
 # from modules.Audio.mp3_to_wav import mp3_wav
 # from modules.Audio.noise_reduction import reduce_noise
@@ -39,7 +32,7 @@ from modules.Video.video_resolution import video_resolution
 from modules.Video.artifacts import noise_detection
 
 # Helpers 
-from modules.Video.helpers.extract_audios import extract_audios
+from modules.helpers.extract_audios import extract_audios
 
 
 class Audio:
@@ -282,13 +275,12 @@ class Video:
 
         if os.path.isdir(path):
             video_files = video_paths(path)
-            print(video_files)
             length = {}
             
             for file in video_files:
-                length[file] = video_length(file)
+                length[str(Path(file).stem)] = video_length(file)
             
-            return length
+            return pd.DataFrame(length.items(), columns=['Videos', 'Length'])
 
         else:
             return video_length(path)
@@ -317,9 +309,9 @@ class Video:
             resolution = {}
             
             for file in video_files:
-                resolution[file] = video_resolution(file)
+                resolution[str(Path(file).stem)] = video_resolution(file)
             
-            return resolution
+            return pd.DataFrame(resolution.items(), columns=['Videos', 'Resolution'])
 
         else:
             return video_resolution(path)
@@ -348,9 +340,9 @@ class Video:
             format = {}
             
             for file in video_files:
-                format[file] = video_format(file)
+                format[str(Path(file).stem)] = video_format(file)
             
-            return format
+            return pd.DataFrame(format.items(), columns=['Videos', 'Format'])
 
         else:
             return video_format(path)
@@ -387,7 +379,7 @@ class Video:
                     extract_audios(file)
                 bps[video_name] = bitrate(file, audio_path)
 
-            return bps
+            return pd.DataFrame(bps.items(), columns=['Videos', 'Bitrate'])
 
         else:
             video_name = str(Path(path).stem)
@@ -423,9 +415,9 @@ class Video:
             objects = {}
             
             for file in video_files:
-                objects[file] = detect_objects(file, modelname)
+                objects[str(Path(file).stem)] = detect_objects(file, modelname)
             
-            return objects
+            return pd.DataFrame(objects.items(), columns=['Videos', 'Objects'])
 
         else:
             return detect_objects(path, modelname)
@@ -454,9 +446,9 @@ class Video:
             framerate = {}
             
             for file in video_files:
-                framerate[file] = fps(file)
+                framerate[str(Path(file).stem)] = fps(file)
             
-            return framerate
+            return pd.DataFrame(framerate.items(), columns=['Videos', 'Framerate'])
 
         else:
             return fps(path)
@@ -483,9 +475,9 @@ class Video:
             b = {}
             
             for file in video_files:
-                b[file] = brightness(file)
+                b[str(Path(file).stem)] = brightness(file)
             
-            return b
+            return pd.DataFrame(b.items(), columns=['Videos', 'Brightness'])
         else:
             return brightness(path)
 
@@ -512,9 +504,10 @@ class Video:
             time = {}
             
             for file in video_files:
-                time[file] = creation_time(file)
+                time[str(Path(file).stem)] = creation_time(file)
             
-            return time
+            return pd.DataFrame(time.items(), columns=['Videos', 'Date created'])
+
         else:
             return creation_time(path)
 
@@ -540,9 +533,9 @@ class Video:
             percents = {}
             
             for file in video_files:
-                percents[file] = noise_detection(file)
+                percents[str(Path(file).stem)] = noise_detection(file)
             
-            return percents
+            return pd.DataFrame(percents.items(), columns=['Videos', 'Artifacts'])
         else:
             return noise_detection(path)
 

@@ -29,4 +29,4 @@ def creation_time(video_path):
     dict = byteD.decode("UTF-8")
     mydata = ast.literal_eval(dict)
     time = mydata['format']['tags']['creation_time']
-    return str(time)
+    return str(time).split('.')[0]

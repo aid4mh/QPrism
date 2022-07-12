@@ -52,5 +52,5 @@ def detect_objects(video_file, modelname):
             for index in range(len(labels)):
                 objects.append(classes[int(labels[index])])
         else:
-            return set(objects)
+            return list(set(objects))
             

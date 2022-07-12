@@ -51,4 +51,4 @@ def brightness(video_file):
         if ret: 
             bright.append(brightness_frame(frame))
         else:
-            return sum(bright)/len(bright) if len(bright) > 0 else 0
+            return round(sum(bright)/len(bright), 3) if len(bright) > 0 else 0
