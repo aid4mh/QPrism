@@ -1,19 +1,22 @@
+import csv
 import os
 
+import pandas as pd
 from pathlib import Path
 from punctuator import Punctuator
 
-from modules.Audio.audio_classification import audio_classification
-from modules.Audio.audio_length import audio_length
-from modules.Audio.audio_paths import audio_paths
-from modules.Audio.audio_sample_rate import sample_rate
+# Audio functions
+# from modules.Audio.audio_classification import audio_classification
+# from modules.Audio.audio_length import audio_length
+# from modules.Audio.audio_paths import audio_paths
+# from modules.Audio.audio_sample_rate import sample_rate
 # from modules.Audio.audio_to_array import aud_to_array
-from modules.Audio.extract_audios import extract_audios
-from modules.Audio.mp3_to_wav import mp3_wav
-from modules.Audio.noise_reduction import reduce_noise
-from modules.Audio.punctuator import punctuate
-from modules.Audio.speechtotext import audio_translate
+# from modules.Audio.mp3_to_wav import mp3_wav
+# from modules.Audio.noise_reduction import reduce_noise
+# from modules.Audio.punctuator import punctuate
+# from modules.Audio.speechtotext import audio_translate
 
+# Video functions
 from modules.Video.bit_rate import bitrate
 from modules.Video.brightness import brightness
 from modules.Video.creation_time import creation_time
@@ -24,6 +27,10 @@ from modules.Video.video_length import video_length
 from modules.Video.video_paths import video_paths
 from modules.Video.video_resolution import video_resolution
 from modules.Video.artifacts import noise_detection
+
+# Helpers 
+from modules.Video.helpers.extract_audios import extract_audios
+
 
 class Audio:
     def __init__(self):
@@ -528,3 +535,52 @@ class Video:
             return percents
         else:
             return noise_detection(path)
+
+
+    def all_video(self, path:str, modelname:str):
+        """
+        Creates a csv file with all the video metrics
+
+        Parameters:
+        ----------
+        path: path to single video file or folder
+        modelname: yolov5 model name for object detection
+
+        Returns
+        -------
+        Writes a csv file to the path "video_metrics.csv"
+        """
+
+        if os.path.isdir(path):
+            video_files = video_paths(path)
+        else:
+            video_files = [os.path.abspath(path)]
+
+        with open('video_metrics.csv', 'w') as file:
+            header = ['Video Name', 'Bit Rate', 'Brightness', 'Date of Creation', 'Frame Rate', \
+                        'Format', 'Length', 'Resolution', 'Objects', 'Artifacts']
+            writer = csv.writer(file)
+            writer.writerow(header)
+
+        csv_path = str(os.getcwd()) + '/video_metrics.csv'  
+        metrics = pd.read_csv(csv_path)
+
+        for i, video in enumerate(video_files):
+            data_row = []
+
+            data_row.append(str(Path(video).stem))
+            data_row.append(self.bitrate(video))
+            data_row.append(self.brightness(video))
+            data_row.append(0) # self.time_created(video))
+            data_row.append(self.framerate(video))
+            data_row.append(self.video_format(video))
+            data_row.append(self.video_length(video))
+            data_row.append(self.resolution(video))
+            data_row.append(self.detect_objects(video, modelname))
+            data_row.append(self.check_artifacts(video))
+
+            data_series = pd.Series(data_row, index=metrics.columns)
+            metrics = metrics.append(data_series, ignore_index=True)
+        
+        print('Metrics saved to ', csv_path)
+        metrics.to_csv(csv_path, index=False)

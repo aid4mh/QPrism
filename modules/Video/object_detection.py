@@ -47,7 +47,8 @@ def detect_objects(video_file, modelname):
         ret, frame = cap.read()
         if ret:
             result = model(frame)
-            labels = result.xyxyn[0][:, -1].numpy()
+            result.show()
+            labels = result.xyxyn[0][:, -1].cpu().numpy()
             for index in range(len(labels)):
                 objects.append(classes[int(labels[index])])
         else:
