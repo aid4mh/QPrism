@@ -574,7 +574,7 @@ class Video:
             data_row.append(str(Path(video).stem))
             data_row.append(self.bitrate(video))
             data_row.append(self.brightness(video))
-            data_row.append(0) # self.time_created(video))
+            data_row.append(self.time_created(video))
             data_row.append(self.framerate(video))
             data_row.append(self.video_format(video))
             data_row.append(self.video_length(video))
