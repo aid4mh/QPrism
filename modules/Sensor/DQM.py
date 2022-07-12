@@ -3,7 +3,7 @@ from APD import compute_APD_multiple, compute_APD_single
 from IRLR import compute_IRLR_multiple, compute_IRLR_single
 from MDR import compute_MDR_multiple, compute_MDR_single
 from RLC import compute_RLC_multiple_file
-from SCR import compute_SCR_multiple, compute_SCR_single
+from SCR import compute_SCR_multiple
 from SNR import compute_SNR_multiple, compute_SNR_single
 from SRC import compute_SRC_multiple, compute_SRC_single
 from VRC import compute_VRC_multiple_file
@@ -41,17 +41,6 @@ class DQM_single_file:
         """
         self.data_list_pd = df
     
-    def set_RLC(self, included:bool):
-        """
-        Set whether RLC is included as a metric
-
-        Parameters
-        ----------
-        included : bool
-            A bool value to indicate whether RLC is included in the result DQM
-        """
-        self.DQM_config['RLC'] = included
-    
     def set_SNR(self, included:bool):
         """
         Set whether SNR is included as a metric
@@ -62,28 +51,6 @@ class DQM_single_file:
             A bool value to indicate whether SNR is included in the result DQM
         """
         self.DQM_config['SNR'] = included
-    
-    def set_VRC(self, included:bool):
-        """
-        Set whether VRC is included as a metric
-
-        Parameters
-        ----------
-        included : bool
-            A bool value to indicate whether VRC is included in the result DQM
-        """
-        self.DQM_config['VRC'] = included
-    
-    def set_SCR(self, included:bool):
-        """
-        Set whether SCR is included as a metric
-
-        Parameters
-        ----------
-        included : bool
-            A bool value to indicate whether SCR is included in the result DQM
-        """
-        self.DQM_config['SCR'] = included
     
     def set_SRC(self, included:bool):
         """
