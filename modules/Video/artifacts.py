@@ -6,7 +6,7 @@ def noise_detection(video_path):
     """
       Get how much of the video that contains video artifacts
 
-      This function returns the percentage of the video that contains artifacts (motion blur, too grainy, static)
+      This function returns the ratio of the video that contains artifacts (motion blur, too grainy, static)
 
       Parameters
       -----------
@@ -15,7 +15,7 @@ def noise_detection(video_path):
       Returns
       -------
       float
-          3.351
+          0.284
     """
     cap = cv2.VideoCapture(video_path)
     vid_noise = []
@@ -32,4 +32,4 @@ def noise_detection(video_path):
             vid_noise.append(1)
         else:
             vid_noise.append(0)
-    return round((sum(vid_noise)*100/len(vid_noise)), 3)
+    return round((sum(vid_noise)/len(vid_noise)), 3)
