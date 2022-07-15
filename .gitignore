@@ -27,3 +27,5 @@ video_metrics.csv
 __pycache__/
 
 yolov5s.pt
+
+audio_files/
