@@ -28,7 +28,7 @@ def brightness_frame(im):
     return math.sqrt(0.241*(r**2) + 0.691*(g**2) + 0.068*(b**2))
 
 
-def brightness(video_file):
+def video_brightness(video_file):
     """
     Get the average brightness of the video file
 
