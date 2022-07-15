@@ -1,23 +1,25 @@
 Glossary
 ========
 
-Video Module
-------------
-
-**word**
-    explanation
-    explanation
-**word**
-    explanation
-    explanation
-
 Audio Module
 ------------
 
-**word**
-    explanation
+word
+  explanation
+
+
+Video Module
+------------
+
+word
+  explanation
+  explanation
+word
+  explanation
+  explanation
 
 Sensor Module
 -------------
 
-**word**
+word
+  explanation
