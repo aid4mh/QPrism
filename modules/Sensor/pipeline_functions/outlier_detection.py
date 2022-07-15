@@ -36,7 +36,7 @@ def count_outliers(record, feature_names):
 
     record['decision_scores'] = decision_scores
     outlier_index = outlier_counts(decision_scores)
-    return len(outlier_index)/len(record)
+    return len(outlier_index)/len(record), outlier_index
 
 
 def count_anomalous_segments(changepoints, outlier_locations, record_set):

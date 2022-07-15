@@ -8,6 +8,7 @@ from SNR import compute_SNR_multiple, compute_SNR_single
 from SRC import compute_SRC_multiple, compute_SRC_single
 from VRC import compute_VRC_multiple_file
 from VDR import compute_VDR_single, compute_VDR_multiple
+import APD
 import csv
 import time
 import numpy as np
@@ -200,6 +201,13 @@ class DQM_single_file:
         if (APD_index==-1):
             return "Not computed"
         return self.score[APD_index]
+    
+    def get_anomaly_index(self):
+        """
+        Return the index (row number) of the anamoly points for the input record.
+        APD must be included in the DQM class.
+        """ 
+        return APD.outlier_index
     
     def save_to_file(self, path:str):
         """
