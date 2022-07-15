@@ -13,9 +13,8 @@ Video Module
 
 word
   explanation
-  explanation
+
 word
-  explanation
   explanation
 
 Sensor Module
