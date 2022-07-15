@@ -20,12 +20,11 @@
 *.data
 *.json
 *.cfg
+*.mp3
+*.wav
 
 video_metrics.csv
 
-# Cache directories
+# directories
 __pycache__/
-
-yolov5s.pt
-
 audio_files/
