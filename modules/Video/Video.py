@@ -344,14 +344,14 @@ class Video:
             data_row = []
 
             data_row.append(str(Path(video).stem))
-            data_row.append(self.bitrate(video))
+            data_row.append(self.bit_rate(video))
             data_row.append(self.brightness(video))
             data_row.append(self.time_created(video))
             data_row.append(self.framerate(video))
-            data_row.append(self.video_format(video))
-            data_row.append(self.video_length(video))
+            data_row.append(self.format(video))
+            data_row.append(self.length(video))
             data_row.append(self.resolution(video))
-            data_row.append(self.detect_objects(video, modelname))
+            data_row.append(self.object_detection(video, modelname))
             data_row.append(self.check_artifacts(video))
 
             data_series = pd.Series(data_row, index=metrics.columns)
