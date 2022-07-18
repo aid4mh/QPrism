@@ -235,6 +235,7 @@ class DQM_multiple_file:
     def __init__(self):
         self.output_path = None
         self.score = []
+        self.individual_score = []
         self.data_list = None
         self.DQM_config = {'SNR': True, 'SCR': True, 'RLC': True, 'VRC': True,
                            'SRC': True, 'MDR': True, 'APD': True, 'VDR': True}
@@ -242,6 +243,7 @@ class DQM_multiple_file:
                              'SCR': compute_SCR_multiple, 'SRC': compute_SRC_multiple, 'VRC': compute_VRC_multiple_file, 
                              'MDR': compute_MDR_multiple, 'APD': compute_APD_multiple, 'VDR': compute_VDR_multiple}
         self.fields = ['IRLR']
+        self.individual_fields = ['IRLR']
         self.stime = None
         self.loading_etime = None
         self.computing_etime = None
@@ -345,9 +347,13 @@ class DQM_multiple_file:
         """
         self.DQM_config['APD'] = included
     
-    def compute_DQM(self):
+    def compute_avg_DQM(self):
         """
-        Compute the DQM for input records under current metrics configuration.
+        Compute a DQM for the input records under current metrics configuration.
+        The DQM averaged all the metrics that are supported in DQM_single_file.
+        In addition to above metrics, it also computes all the metrics only support DQM_multi_file.
+        The computed DQM consists only one row. If you wish to get the DQM for each individual record,
+        call the compute_individual_DQM method instead.
         Must call set_input_path before calling this method.
         """
         self.score = []
@@ -369,18 +375,71 @@ class DQM_multiple_file:
         self.etime = time.time()
         print("The total time for computing the DQM is: " + str(self.etime-self.stime) + ' seconds.')
     
-    def get_DQM(self):
+    def compute_individual_DQM(self):
+        """
+        Compute a DQM for the input records under current metrics configuration.
+        This computes the DQM for each individual record, and store the DQMs as a list.
+        If you wish to get the averaged DQM with the metrics only support multiple records,
+        call the compute_avg_DQM method instead.
+        Must call set_input_path before calling this method.
+        """
+        self.individual_score = []
+        self.individual_fields = ['IRLR']
+        self.stime = time.time()
+        print("Start computing the DQM... This may take a long time if the dataset is large")
+        multi_metrics_only = ['VRC', 'SCR', 'RLC']
+        single_metrics = ['SNR', 'VDR', 'SRC', 'MDR', 'APD']
+        for key in self.DQM_config.keys():
+                if self.DQM_config[key] is True:
+                    if key not in multi_metrics_only:
+                        self.individual_fields.append(key)
+        for record in self.data_list:
+            single_DQM = DQM_single_file()
+            single_DQM.set_input_data(record)
+            for key in single_metrics:
+                if key not in self.individual_fields:
+                    if key=='SNR':
+                        single_DQM.set_SNR(False)
+                    elif key=='VDR':
+                        single_DQM.set_VDR(False)
+                    elif key=='SRC':
+                        single_DQM.set_SRC(False)
+                    elif key=='MDR':
+                        single_DQM.set_MDR(False)
+                    elif key=='APD':
+                        single_DQM.set_APD(False)
+            single_DQM.compute_DQM()
+            single_DQM_result = single_DQM.get_DQM()
+            self.individual_score.append(single_DQM_result)
+        self.etime = time.time()
+        print("The total time for computing the DQM is: " + str(self.etime-self.stime) + ' seconds.')
+    
+    def get_avg_DQM(self):
         """
         Return the computed DQM as a list. compute_DQM must be called before this method.
         """
         return self.score
     
-    def get_fields(self):
+    def get_individual_DQM(self):
         """
-        Return a list represents the current included metrics in DQM.
-        compute_DQM must be called before this method.
+        Return the computed individual DQM as a list. Each element in the list represents a single record.
+        compute_individual DQM must be called before this method.
+        """
+        return self.individual_score
+    
+    def get_avg_fields(self):
+        """
+        Return a list represents the current included metrics in the multi-file DQM.
+        compute_avg_DQM must be called before this method.
         """
         return self.fields
+    
+    def get_individual_fields(self):
+        """
+        Return a list represents the current included metrics in the individual file DQM.
+        compute_individual_DQM must be called before this method.
+        """
+        return self.individual_fields
 
     def get_IRLR(self):
         """
@@ -469,7 +528,7 @@ class DQM_multiple_file:
             return "Not computed"
         return self.score[VRC_index]
     
-    def save_to_file(self, path:str):
+    def save_avg_DQM_to_file(self, path:str):
         """
         Save the computed DQM as a csv file to the given output path.
         Must call compute_DQM before calling this.
@@ -485,4 +544,23 @@ class DQM_multiple_file:
             write = csv.writer(result_file)
             write.writerow(self.fields)
             write.writerow(self.score)
+        print("Data successfuly saved.")
+    
+    def save_individual_DQM_to_file(self, path:str):
+        """
+        Save the computed DQM as a csv file to the given output path.
+        Must call compute_DQM before calling this.
+
+        Parameters
+        ----------
+        path : str
+            Path to the output file
+        
+        """
+        self.output_path = path
+        with open(self.output_path, 'w') as result_file:
+            write = csv.writer(result_file)
+            write.writerow(self.individual_fields)
+            for individual_DQM in self.individual_score:
+                write.writerow(individual_DQM)
         print("Data successfuly saved.")
