@@ -3,249 +3,21 @@ import os
 
 import pandas as pd
 from pathlib import Path
-from punctuator import Punctuator
-
-# from modules.Sensor.DQM import *
-# from modules.Sensor.load_data import *
-
-# Audio functions
-# from modules.Audio.audio_classification import audio_classification
-# from modules.Audio.audio_length import audio_length
-# from modules.Audio.audio_paths import audio_paths
-# from modules.Audio.audio_sample_rate import sample_rate
-# from modules.Audio.audio_to_array import aud_to_array
-# from modules.Audio.mp3_to_wav import mp3_wav
-# from modules.Audio.noise_reduction import reduce_noise
-# from modules.Audio.punctuator import punctuate
-# from modules.Audio.speechtotext import audio_translate
 
 # Video functions
 from modules.Video.bit_rate import bitrate
-from modules.Video.brightness import brightness
+from modules.Video.brightness import video_brightness
 from modules.Video.creation_time import creation_time
 from modules.Video.frame_rate import fps
 from modules.Video.object_detection import detect_objects
 from modules.Video.video_format import video_format
 from modules.Video.video_length import video_length
-from modules.Video.video_paths import video_paths
 from modules.Video.video_resolution import video_resolution
 from modules.Video.artifacts import noise_detection
 
 # Helpers 
-from modules.helpers.extract_audios import extract_audios
-
-
-class Audio:
-    def __init__(self):
-        self.aud_metrics = ['classification', 'audio_length', 'sample_rate', 'aud_to_array',\
-                            'mp3_to_wav', 'noise_reduction', 'audio_translation']
-
-
-    def mp3_to_wav(self, path:str):
-        """
-        Convert mp3 files to mono wav files
-
-        This function takes in mp3 audio files and converts them into mono wav files to be used for deep learning and further exploration.
-
-        Parameters
-        -----------
-        mp3_path : path to the .mp3 file
-
-        Returns
-        -------
-        NONE
-            Saves the .wav file in the same working directory
-            "audio_Wav.wav"
-        """
-
-        if os.path.isdir(path):
-            audio_files = audio_paths(path)
-
-            for file in audio_files:
-                mp3_wav(file)
-        
-        else:
-            mp3_wav(path)
-
-
-    def audio_length(self, path:str):
-        """
-        Get the length of the audio
-        
-        This functions calls the audio_length function and 
-        gives the length for both a folder of audios or a single audio file.
-
-        Parameters
-        ----------
-        path : path to a folder or a file
-
-        Returns
-        -------
-        dict (incase of folder)
-        int (incase of file)
-            dict : {'audio_file1' : 101, ... 'audio_filen' : 89}
-            int : 101
-        """
-
-        if os.path.isdir(path):
-            audio_files = audio_paths(path)
-            length = {}
-            
-            for file in audio_files:
-                length[file] = audio_length(file)
-            
-            return length
-
-        else:
-            return audio_length(path)
-
-    
-    def sample_rate(self, path:str):
-        """
-        Get the sample rate of the audio
-        
-        This functions calls the sample_rate function and 
-        gives the bit rate for both a folder of audios or a single audio file.
-
-        Parameters
-        ----------
-        path : path to a folder or a file
-
-        Returns
-        -------
-        dict (incase of folder)
-        int (incase of file)
-            dict : {'audio_file1' : 1024, ... 'audio_filen' : 1399}
-            int : 1024
-        """
-
-        if os.path.isdir(path):
-            audio_files = audio_paths(path)
-            s_rate = {}
-
-            for file in audio_files:
-                s_rate[file] = sample_rate(file)
-            
-            return s_rate
-
-        else:
-            return sample_rate(path)
-
-
-    def audio_2_array(self, path:str):
-        """
-        Reads audio file and transforms it into numpy array
-
-        Parameters
-        ----------
-        audio_path : path to the the audio file
-
-        Returns
-        -------
-        dict --> (incase of folder)
-        tuple(int, Numpy array) --> (incase of file)
-        """
-        if os.path.isdir(path):
-            audio_files = audio_paths(path)
-            array = {}
-
-            for file in audio_files:
-                array[file] = aud_to_array(file)
-            
-            return array
-
-        else:
-            return aud_to_array(path)
-
-    
-    def audio_translation(self, path:str):
-        """
-        This function translate the given audio file into punctuated text using the Google API
-
-        Parameters
-        ----------
-        path : name of the audio_file / audio_folder
-
-        Returns
-        -------
-        string, float
-                "some text ", 0.6754368
-        """ 
-        p = Punctuator('Demo-Europarl-EN.pcl')
-
-        if os.path.isdir(path):
-            audio_files = audio_paths(path)
-            data = {}
-
-            for file in audio_files:
-                data[file] = {}
-                text, conf = audio_translate(file)
-
-                data[file]['Confidence'] = conf
-                data[file]['Text'] = p.punctuate(text)
-            
-            return data
-
-        else:
-            text, conf = audio_translate(path)
-            return p.punctuate(text), conf
-
-    
-    def audio_classify(self, path:str):
-        """
-        Get a list of all the sounds in an audio
-
-        This function returns a list of all the prominent sounds inside the audio
-
-        Parameters
-        ----------
-        path : path to a folder or a file
-
-        Returns
-        -------
-        dict (incase of folder)
-        list (incase of file)
-            dict : {'audio_file1' : ['Speech', 'Whistling', 'Alarm'], ... 'audio_filen' : 'Speech', 'Alarm']}
-            list : ['Speech', 'Whistling', 'Alarm']
-        """
-        if os.path.isdir(path):
-            audio_files = audio_paths(path)
-            sounds = {}
-
-            for file in audio_files:
-                sounds[file] = audio_classification(file)
-            
-            return sounds
-        
-        else:
-            return audio_classification(path)
-
-    
-    def noise_reduce(self, path:str):
-        """
-        Remove the background noise of an audio
-
-        This function takes the path of a wav audio file and saves a new one with no background noise using non-stationary noise reduction
-
-        Parameters
-        -----------
-        wav_path : path of a .wav audio
-
-        Returns
-        -------
-        NONE
-            saves the cleaned .wav audio in the working directory
-            "example_cleaned.wav"
-        """
-        if os.path.isdir(path):
-            audio_files = audio_paths(path)
-
-            for file in audio_files:
-                reduce_noise(file)
-        
-        else:
-            reduce_noise(path)
-
+from modules.Video.helpers.extract_audios import extract_audios
+from modules.Video.helpers.video_paths import video_paths
 
 
 class Video:
@@ -255,7 +27,7 @@ class Video:
                         'video_format', 'video_length', 'video_resolution']
 
 
-    def video_length(self, path:str):
+    def length(self, path:str):
         """
         Get the length of the video
         This functions calls the video_length function and 
@@ -316,8 +88,8 @@ class Video:
         else:
             return video_resolution(path)
 
-    
-    def video_format(self, path:str):
+
+    def format(self, path:str):
         """
         Get the format of the video
         This functions calls the video_format function and 
@@ -348,7 +120,7 @@ class Video:
             return video_format(path)
 
 
-    def bitrate(self, path:str):
+    def bit_rate(self, path:str):
         """
         Get the bit rate of the video
         This functions calls the bit_rate function and 
@@ -393,7 +165,7 @@ class Video:
             return bitrate(path, audio_path)
 
 
-    def detect_objects(self, path:str, modelname:str):
+    def object_detection(self, path:str, modelname:str):
         """
         Get the objects present in the video
         This functions calls the detect_objects function and gives the objects present in the video.
@@ -422,7 +194,7 @@ class Video:
         else:
             return detect_objects(path, modelname)
 
-    
+
     def framerate(self, path:str):
         """
         Get the framerate of the video
@@ -475,13 +247,13 @@ class Video:
             b = {}
             
             for file in video_files:
-                b[str(Path(file).stem)] = brightness(file)
+                b[str(Path(file).stem)] = video_brightness(file)
             
             return pd.DataFrame(b.items(), columns=['Videos', 'Brightness'])
         else:
-            return brightness(path)
+            return video_brightness(path)
 
-    
+
     def time_created(self, path:str):
         """
         Get the creation time of a video
@@ -511,7 +283,7 @@ class Video:
         else:
             return creation_time(path)
 
-    
+
     def check_artifacts(self, path:str):
         """
         Get how much of the video that contains video artifacts
@@ -572,14 +344,14 @@ class Video:
             data_row = []
 
             data_row.append(str(Path(video).stem))
-            data_row.append(self.bitrate(video))
+            data_row.append(self.bit_rate(video))
             data_row.append(self.brightness(video))
             data_row.append(self.time_created(video))
             data_row.append(self.framerate(video))
-            data_row.append(self.video_format(video))
-            data_row.append(self.video_length(video))
+            data_row.append(self.format(video))
+            data_row.append(self.length(video))
             data_row.append(self.resolution(video))
-            data_row.append(self.detect_objects(video, modelname))
+            data_row.append(self.object_detection(video, modelname))
             data_row.append(self.check_artifacts(video))
 
             data_series = pd.Series(data_row, index=metrics.columns)
