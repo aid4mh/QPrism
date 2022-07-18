@@ -106,7 +106,9 @@ class DQM_single_file:
         self.score = []
         self.fields = ['IRLR']
         self.stime = time.time()
-        print("Start computing the DQM... This may take a long time if the dataset is large")
+        # You can remove the comment below to print the computation time. Note this will cause compute_individual_DQM in 
+        # the DQM_multi_file class to print this info for each record.
+        #print("Start computing the DQM... This may take a long time if the dataset is large")
         for key in self.DQM_config.keys():
                 if self.DQM_config[key] is True:
                     self.fields.append(key)
@@ -120,7 +122,7 @@ class DQM_single_file:
                 if self.DQM_config[key] is True:
                     self.score.append(np.NAN)
         self.etime = time.time()
-        print("The total time for computing the DQM is: " + str(self.etime-self.stime) + ' seconds.')
+        #print("The total time for computing the DQM is: " + str(self.etime-self.stime) + ' seconds.')
     
     def get_DQM(self):
         """

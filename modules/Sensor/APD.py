@@ -15,6 +15,6 @@ def compute_APD_single(record_df):
 def compute_APD_multiple(data_list):
     APD_list = []
     for record in data_list:
-        record_APD, outlier_index = compute_APD_single(record)
+        record_APD = compute_APD_single(record)
         APD_list.append(record_APD)
     return np.mean(APD_list)

@@ -17,12 +17,12 @@ if __name__ == '__main__':
     single_csv_file_dqm.compute_DQM()
     print(single_csv_file_dqm.get_fields())
     print(single_csv_file_dqm.get_DQM())"""
-    """multi_file_dqm = DQM_multiple_file()
+    multi_file_dqm = DQM_multiple_file()
     df_list = load_data_json_multi_file('/home/lin/Documents/CAMH/SenseActivity/data/Test/SUBJ00001/Accelerometer')
     multi_file_dqm.set_input_data(df_list)
-    multi_file_dqm.compute_DQM()
-    print(multi_file_dqm.get_fields())
-    print(multi_file_dqm.get_DQM())"""
+    multi_file_dqm.compute_avg_DQM()
+    print(multi_file_dqm.get_avg_fields())
+    print(multi_file_dqm.get_avg_DQM())
     """multi_csvfile_dqm = DQM_multiple_file()
     df_list = load_data_csv_multi_file('/home/lin/Documents/CAMH/SenseActivity/data/csv_data')
     multi_csvfile_dqm.set_input_data(df_list)
