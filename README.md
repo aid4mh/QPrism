@@ -71,6 +71,8 @@ QPrism fills the current gap by allowing researchers and developers to perform d
 | `audio_classify(wav_path)` | **wav_path** `str`: path of a .wav audio                                                                                                               | **sounds in audio** `list`: a list of the sounds inside the audio <br> `list` : ['Speech', 'Whistling', 'Alarm'] |
 | `length(wav_path)` | **wav_path** `str`:  path of a .wav audio  | **audio length** `int`: the length of the audio file in seconds <br> `int`: "104.5" |
 | `sample_rate(wav_path)` | **wav_path** `str`:  path of a .wav audio  | **audio frame rate** `int`: the frame rate of the audio <br> `int`: "16000" |
+| `root_mean_square(wav_path)` | **wav_path** `str`:  path of a .wav audio  | **audio rms** `int`: the rms of the audio <br> `int`: "800" |
+| `signaltonoise(wav_path)` | **wav_path** `str`:  path of a .wav audio  | **audio snr** `float`: the snr of the audio <br> `int`: "41.095" |
 | `all_audio`    | **path** `str`: path to a specific video or directory that contains all the videos | saves all the metrics to audio_metrics.csv |
 
 
