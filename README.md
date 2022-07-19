@@ -61,6 +61,7 @@ QPrism fills the current gap by allowing researchers and developers to perform d
 | `brightness(path)`         | **path** `str`: path to a specific video                                                                                                        | **brightness** `int`: brightness of specific video                                                                 |
 | `creation_time(path)`      | **path** `str`: path to a specific video                                                                                                        | **creation time** `str`: the date and time of when the video was created <br> `str` : "2022-05-29 23:22:59.599607" |
 | `artifacts(path)`      | **path** `str`: path to a specific video                                                                                                        | **percentage artifacts** `int`: the percentage of the video that contains artifacts (motion blur, too grainy, static) <br> `int` : "3.351" |
+| `bitrate(path)`            | **path** `str`: path to a specific video                                                                                                        | **bit rate** <br> `int`: bit rate of specific audio                                                                |
 
 2. Audio: 
 
@@ -70,9 +71,7 @@ QPrism fills the current gap by allowing researchers and developers to perform d
 | `classification(wav_path)` | **wav_path** `str`: path of a .wav audio                                                                                                               | **sounds in audio** `list`: a list of the sounds inside the audio <br> `list` : ['Speech', 'Whistling', 'Alarm'] |
 | `length(wav_path)` | **wav_path** `str`:  path of a .wav audio  | **audio length** `int`: the length of the audio file in seconds <br> `int`: "104.5" |
 | `sample_rate(wav_path)` | **wav_path** `str`:  path of a .wav audio  | **audio frame rate** `int`: the frame rate of the audio <br> `int`: "16000" |
-| `to_mono(mp3_path)` | **mp3_path** `str`:  path of a .mp3 audio  | **NONE** saves the .wav audio in the same working directory |
-| `get_audio_to_text(audio_name)` | **wav_path** `str`:  path of a .wav audio | **translated text** `str`: the speech in the audio transcribed <br> **Accuracy** `int`: the accuracy of teh translation |
-| `bitrate(path)`            | **path** `str`: path to a specific video                                                                                                        | **bit rate** <br> `int`: bit rate of specific audio                                                                |
+
 
 3. Sensor:
 
@@ -103,9 +102,28 @@ An explanation of the metrics supported for sensor QA:
 | `SRC`  | Sampling Rate Consistency - Uniformness of the sampling rate within and across records.                     | Consistency  |
 | `VRC`  | Value Range Consistency - Uniformness of the value range within and across records.                         | Consistency  |
 
+## Helper functions
+
+1. Video
+
+
 
 ## Examples:
 1. Video:
+
+| Function                     | Input                                                                        | Output                             |
+| :--------------------------- | :----------------------------------------------------------------------------| :--------------------------------- |
+| `download`                   | **url** `str`: A link to a video <br> **name** `str`: name of the video      | saves video to name.mp4            |
+| `extract_audios`             | **path** `str`: path to a specific video                                     | saves audio to video_name_Audio.mp3|
+
+2. Audio:
+
+| Function                     | Input                                                                        | Output                             |
+| :--------------------------- | :----------------------------------------------------------------------------| :--------------------------------- |
+| `download`                   | **url** `str`: A link to a video <br> **name** `str`: name of the audio      | saves video to name.mp3            |
+| `audio_to_array`             | **path** `str`: path to a specific audio                                     | returns a numpy array              |
+| `to_mono_wav`                | **path** `str`: path to a specific .wav or .mp3 audio                        | saves the .wav audio (mono channel)|
+| `waveform`                   | **path** `str`: path to a specific .wav or .mp3 audio                        | saves the .wav audio (mono channel)|
 
 
 Code: `Video = qprism.Video()` <br>
