@@ -1,7 +1,7 @@
 import urllib.request
 
 def download(url, name):
-    name=name+".mp4"
+    name=name+".mp3"
     try:
         print("Downloading starts...\n")
         urllib.request.urlretrieve(url, name)
