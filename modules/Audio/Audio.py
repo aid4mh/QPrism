@@ -5,51 +5,25 @@ import pandas as pd
 from pathlib import Path
 
 # Audio functions
-from modules.Audio.audio_classification import audio_classification
+# from modules.Audio.audio_classification import audio_classification
 from modules.Audio.audio_length import audio_length
 from modules.Audio.audio_sample_rate import sample_rate
-from modules.Audio.noise_reduction import reduce_noise
+from modules.Audio.audio_rms import rms
+from modules.Audio.snr import snr
 
 # Helpers 
-from modules.Audio.helpers.audio_to_array import aud_to_array
+from modules.Audio.helpers.audio_to_array import to_array
 from modules.Audio.helpers.audio_paths import audio_paths
 from modules.Audio.helpers.to_mono_wav import to_mono_wav
 
 
 class Audio:
     def __init__(self):
-        self.aud_metrics = ['classification', 'audio_length', 'sample_rate', 'aud_to_array',\
-                            'mp3_to_wav', 'noise_reduction', 'audio_translation']
+        self.aud_metrics = ['classification', 'audio_length', 'sample_rate', 'rms'\
+                            'signal_to_noise']
 
 
-    def mp3_to_wav(self, path:str):
-        """
-        Convert mp3 files to mono wav files
-
-        This function takes in mp3 audio files and converts them into mono wav files to be used for deep learning and further exploration.
-
-        Parameters
-        -----------
-        mp3_path : path to the .mp3 file
-
-        Returns
-        -------
-        NONE
-            Saves the .wav file in the same working directory
-            "audio_Wav.wav"
-        """
-
-        # if os.path.isdir(path):
-        #     audio_files = audio_paths(path)
-
-        #     for file in audio_files:
-        #         mp3_wav(file)
-        
-        # else:
-        #     mp3_wav(path)
-
-
-    def audio_length(self, path:str):
+    def length(self, path:str):
         """
         Get the length of the audio
         
@@ -73,9 +47,9 @@ class Audio:
             length = {}
             
             for file in audio_files:
-                length[file] = audio_length(file)
+                length[str(Path(file).stem)] = audio_length(file)
             
-            return length
+            return pd.DataFrame(length.items(), columns=['Audios', 'Length'])
 
         else:
             return audio_length(path)
@@ -105,71 +79,12 @@ class Audio:
             s_rate = {}
 
             for file in audio_files:
-                s_rate[file] = sample_rate(file)
+                s_rate[str(Path(file).stem)] = sample_rate(file)
             
-            return s_rate
+            return pd.DataFrame(s_rate.items(), columns=['Audios', 'Sample Rate'])
 
         else:
             return sample_rate(path)
-
-
-    def audio_2_array(self, path:str):
-        """
-        Reads audio file and transforms it into numpy array
-
-        Parameters
-        ----------
-        audio_path : path to the the audio file
-
-        Returns
-        -------
-        dict --> (incase of folder)
-        tuple(int, Numpy array) --> (incase of file)
-        """
-        if os.path.isdir(path):
-            audio_files = audio_paths(path)
-            array = {}
-
-            for file in audio_files:
-                array[file] = aud_to_array(file)
-            
-            return array
-
-        else:
-            return aud_to_array(path)
-
-    
-    def audio_translation(self, path:str):
-        """
-        This function translate the given audio file into punctuated text using the Google API
-
-        Parameters
-        ----------
-        path : name of the audio_file / audio_folder
-
-        Returns
-        -------
-        string, float
-                "some text ", 0.6754368
-        """ 
-        p = Punctuator('Demo-Europarl-EN.pcl')
-
-        if os.path.isdir(path):
-            audio_files = audio_paths(path)
-            data = {}
-
-            for file in audio_files:
-                data[file] = {}
-                text, conf = audio_translate(file)
-
-                data[file]['Confidence'] = conf
-                data[file]['Text'] = p.punctuate(text)
-            
-            return data
-
-        else:
-            text, conf = audio_translate(path)
-            return p.punctuate(text), conf
 
     
     def audio_classify(self, path:str):
@@ -194,35 +109,65 @@ class Audio:
             sounds = {}
 
             for file in audio_files:
-                sounds[file] = audio_classification(file)
+                sounds[str(Path(file).stem)] = audio_classification(file)
             
-            return sounds
+            return pd.DataFrame(sounds.items(), columns=['Audios', 'Voices'])
         
         else:
             return audio_classification(path)
 
     
-    def noise_reduce(self, path:str):
+    def root_mean_square(self, path:str):
         """
-        Remove the background noise of an audio
-
-        This function takes the path of a wav audio file and saves a new one with no background noise using non-stationary noise reduction
+        RMS level (root mean squared) is just proportional to the amount of energy over a period of time in the signal. This can be used to distinguish audios that are louder from each other.
+        This function returns the rms value of a given function.
 
         Parameters
         -----------
-        wav_path : path of a .wav audio
+        wav_path : path to a .wav audio
 
         Returns
         -------
-        NONE
-            saves the cleaned .wav audio in the working directory
-            "example_cleaned.wav"
+        int: the rms value of the audio
+            "880"
         """
+
         if os.path.isdir(path):
             audio_files = audio_paths(path)
+            rms_values = {}
 
             for file in audio_files:
-                reduce_noise(file)
-        
+                rms_values[str(Path(file).stem)] = rms(file)
+            
+            return pd.DataFrame(rms_values.items(), columns=['Audios', 'RMS'])
+
         else:
-            reduce_noise(path)
+            return rms(path)
+
+
+    def signaltonoise(self, path:str):
+        """
+        RMS level (root mean squared) is just proportional to the amount of energy over a period of time in the signal. This can be used to distinguish audios that are louder from each other.
+        This function returns the rms value of a given function.
+
+        Parameters
+        -----------
+        wav_path : path to a .wav audio
+
+        Returns
+        -------
+        int: the rms value of the audio
+            "880"
+        """
+
+        if os.path.isdir(path):
+            audio_files = audio_paths(path)
+            snr_values = {}
+
+            for file in audio_files:
+                snr_values[str(Path(file).stem)] = round(snr(file), 3)
+            
+            return pd.DataFrame(snr_values.items(), columns=['Audios', 'SNR'])
+
+        else:
+            return round(snr(path), 3)

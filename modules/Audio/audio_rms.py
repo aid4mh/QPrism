@@ -2,7 +2,7 @@ import audioop
 import wave
 
 
-def audio_classification(wav_path):
+def rms(wav_path):
     """
     RMS level (root mean squared) is just proportional to the amount of energy over a period of time in the signal. This can be used to distinguish audios that are louder from each other.
 

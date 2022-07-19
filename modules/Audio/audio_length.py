@@ -18,4 +18,4 @@ def audio_length(wav_path):
     """
     sample_rate, wav_data = wavfile.read(wav_path, 'rb')
     duration = len(wav_data)/sample_rate
-    return float(duration)
+    return round(float(duration), 3)
