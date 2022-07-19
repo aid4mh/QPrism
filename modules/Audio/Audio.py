@@ -171,3 +171,45 @@ class Audio:
 
         else:
             return round(snr(path), 3)
+
+    def all_audio(self, path:str):
+        """
+        Creates a csv file with all the audio metrics
+
+        Parameters:
+        ----------
+        path: path to single audio file or folder
+
+        Returns
+        -------
+        Writes a csv file to the path "audio_metrics.csv"
+        """
+
+        if os.path.isdir(path):
+            audio_files = audio_paths(path)
+        else:
+            audio_files = [os.path.abspath(path)]
+
+        with open('audio_metrics.csv', 'w') as file:
+            header = ['Audio Name', 'Length', 'Sample Rate', 'Voices', 'SNR', 'RMS']
+            writer = csv.writer(file)
+            writer.writerow(header)
+
+        csv_path = str(os.getcwd()) + '/audio_metrics.csv'  
+        metrics = pd.read_csv(csv_path)
+
+        for i, audio in enumerate(audio_files):
+            data_row = []
+
+            data_row.append(str(Path(audio).stem))
+            data_row.append(self.length(audio))
+            data_row.append(self.sample_rate(audio))
+            data_row.append(self.audio_classify(audio))
+            data_row.append(self.signaltonoise(audio))
+            data_row.append(self.root_mean_square(audio))
+
+            data_series = pd.Series(data_row, index=metrics.columns)
+            metrics = metrics.append(data_series, ignore_index=True)
+        
+        print('Metrics saved to ', csv_path)
+        metrics.to_csv(csv_path, index=False)
