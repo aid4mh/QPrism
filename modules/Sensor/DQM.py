@@ -1,4 +1,4 @@
-from load_data import *
+from Sensor.load_data import *
 from APD import compute_APD_multiple, compute_APD_single
 from IRLR import compute_IRLR_multiple, compute_IRLR_single
 from MDR import compute_MDR_multiple, compute_MDR_single
