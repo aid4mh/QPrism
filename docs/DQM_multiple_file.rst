@@ -6,6 +6,6 @@ and compute a set of individual DQMs for each record in the dataset.
 
 .. module:: modules.Sensor.DQM
 
-DQM.DQM_multiple_file
-~~~~~~~~~~~~~~~~~~~~~
-.. autoclass:: DQM_multiple_file
+DQM_multiple_file
+~~~~~~~~~~~~~~~~~
+.. autoclass:: modules.Sensor.DQM.DQM_multiple_file
