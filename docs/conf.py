@@ -2,7 +2,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../modules'))
-
+autodoc_mock_imports = ["load_data, lumache"]
 # -- Project information
 
 project = 'QPrism'
