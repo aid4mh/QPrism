@@ -1,14 +1,14 @@
 from Sensor.load_data import *
-from APD import compute_APD_multiple, compute_APD_single
-from IRLR import compute_IRLR_multiple, compute_IRLR_single
-from MDR import compute_MDR_multiple, compute_MDR_single
-from RLC import compute_RLC_multiple_file
-from SCR import compute_SCR_multiple
-from SNR import compute_SNR_multiple, compute_SNR_single
-from SRC import compute_SRC_multiple, compute_SRC_single
-from VRC import compute_VRC_multiple_file
-from VDR import compute_VDR_single, compute_VDR_multiple
-import APD
+from Sensor.APD import compute_APD_multiple, compute_APD_single
+from Sensor.IRLR import compute_IRLR_multiple, compute_IRLR_single
+from Sensor.MDR import compute_MDR_multiple, compute_MDR_single
+from Sensor.RLC import compute_RLC_multiple_file
+from Sensor.SCR import compute_SCR_multiple
+from Sensor.SNR import compute_SNR_multiple, compute_SNR_single
+from Sensor.SRC import compute_SRC_multiple, compute_SRC_single
+from Sensor.VRC import compute_VRC_multiple_file
+from Sensor.VDR import compute_VDR_single, compute_VDR_multiple
+import Sensor.APD
 import csv
 import time
 import numpy as np

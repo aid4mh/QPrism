@@ -3,6 +3,7 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../modules'))
 import Sensor.load_data as load_data
+autodoc_mock_imports = ["module.Sensor.load_data"]
 # -- Project information
 
 project = 'QPrism'
