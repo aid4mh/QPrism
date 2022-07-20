@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import *
-from pipeline_functions.preprocessing import *
+from modules.Sensor.pipeline_functions.preprocessing import *
 
 # def Signal_to_Noise(x):
 #   n = len(x)

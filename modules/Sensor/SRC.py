@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-from data_processing import *
-from pipeline_functions.single_function_DQMs import sampling_rate_consistency
+from modules.Sensor.data_processing import *
+from modules.Sensor.pipeline_functions.single_function_DQMs import sampling_rate_consistency
 
 
 def compute_SRC_single(record_df):

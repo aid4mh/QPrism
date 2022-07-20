@@ -1,9 +1,9 @@
 import pandas as pd
 import time
-from load_data import *
+from modules.Sensor.load_data import *
 import numpy as np
-from data_processing import *
-from pipeline_functions.preprocessing import features_to_float
+from modules.Sensor.data_processing import *
+from modules.Sensor.pipeline_functions.preprocessing import features_to_float
 
 
 def std_arr(arr):

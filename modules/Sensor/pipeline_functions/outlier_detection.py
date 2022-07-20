@@ -1,6 +1,6 @@
 from pyod.models.feature_bagging import FeatureBagging
 import pandas as pd
-from pipeline_functions.preprocessing import *
+from modules.Sensor.pipeline_functions.preprocessing import *
 
 import warnings
 warnings.filterwarnings("ignore")

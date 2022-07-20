@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-from data_processing import *
-from pipeline_functions.signal_to_noise import *
+from modules.Sensor.data_processing import *
+from modules.Sensor.pipeline_functions.signal_to_noise import *
 
 
 def compute_SNR_single(record_df):

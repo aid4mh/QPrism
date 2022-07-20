@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-from data_processing import *
-from pipeline_functions.outlier_detection import count_outliers
+from modules.Sensor.data_processing import *
+from modules.Sensor.pipeline_functions.outlier_detection import count_outliers
 
 
 def compute_APD_single(record_df):

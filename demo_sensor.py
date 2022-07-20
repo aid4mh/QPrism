@@ -1,5 +1,5 @@
-from DQM import DQM_multiple_file, DQM_single_file
-from load_data import *
+from modules.Sensor.DQM import DQM_multiple_file, DQM_single_file
+from modules.Sensor.load_data import *
 import pandas as pd
 
 

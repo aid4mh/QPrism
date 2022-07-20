@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from pipeline_functions.single_function_DQMs import consistency
+from modules.Sensor.pipeline_functions.single_function_DQMs import consistency
 
 
 def compute_RLC(user_data_list):
