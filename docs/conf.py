@@ -1,9 +1,7 @@
 # Configuration file for the Sphinx documentation builder.
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../modules'))
-import Sensor.load_data as load_data
-autodoc_mock_imports = ["module.Sensor.load_data"]
+sys.path.insert(0, os.path.abspath('../'))
 # -- Project information
 
 project = 'QPrism'
