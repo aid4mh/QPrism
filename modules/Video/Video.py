@@ -9,7 +9,7 @@ from modules.Video.bit_rate import bitrate
 from modules.Video.brightness import video_brightness
 from modules.Video.creation_time import creation_time
 from modules.Video.frame_rate import fps
-from modules.Video.object_detection import detect_objects
+from modules.Video.object_detection import detect_objects, load_model
 from modules.Video.video_format import video_format
 from modules.Video.video_length import video_length
 from modules.Video.video_resolution import video_resolution
@@ -183,16 +183,18 @@ class Video:
         """
 
         if os.path.isdir(path):
+            model, classes = load_model(modelname)
             video_files = video_paths(path)
             objects = {}
             
             for file in video_files:
-                objects[str(Path(file).stem)] = detect_objects(file, modelname)
+                objects[str(Path(file).stem)] = detect_objects(file, model, classes)
             
             return pd.DataFrame(objects.items(), columns=['Videos', 'Objects'])
 
         else:
-            return detect_objects(path, modelname)
+            model, classes = load_model(modelname)
+            return detect_objects(path, model, classes)
 
 
     def framerate(self, path:str):

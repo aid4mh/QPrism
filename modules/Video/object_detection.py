@@ -21,7 +21,7 @@ def load_model(modelname):
     return model, classes
 
 
-def detect_objects(video_file, modelname):
+def detect_objects(video_file, model, classes):
     """
     Get the objects present in the video
 
@@ -39,7 +39,7 @@ def detect_objects(video_file, modelname):
         {'person', 'cell phone', 'chair', 'tv'}
     """
 
-    model, classes = load_model(modelname)
+    # model, classes = load_model(modelname)
 
     cap = cv2.VideoCapture(video_file)
     objects = list()
