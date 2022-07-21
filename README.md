@@ -8,121 +8,16 @@ QPrism fills the current gap by allowing researchers and developers to perform d
 
 ## Installation
 
- ### Dependencies: 
- 1. For Video:
+    The installation can be done with pip, this will automatically install all the dependencies.
+
+    ` $ (sudo) pip install QPrism `
+
+
+## Documentation
+
+    The full documentation for QPrism can be accessed [here](https://qprism.readthedocs.io/en/latest/).
  
- | Library                                          | Version         | Installation                                |
-| :-------------------------------------------------- | :-------------- | :------------------------------------------ |
-| [ffmpeg](https://www.ffmpeg.org/download.html)      | 5.0.1 "Lorentz" | `pip install ffprobe `                      |
-| [numpy](https://numpy.org/)                         | 1.22.4          | `pip install numpy`                         |
-| [opencv-python](https://opencv.org/)                | 4.5.5           | `pip install opencv-python `                |
-| [Pillow](https://pillow.readthedocs.io/en/stable/)  | 9.1.1           | `pip install Pillow`                        |
-| [torch](https://pytorch.org/docs/stable/torch.html) | 1.22            | `pip3 install torch torchvision torchaudio` |
 
-2. For Audio:
-
-| Library                                          | Version         | Installation                                |
-| :-------------------------------------------------- | :-------------- | :------------------------------------------ |
-| [tensoflow](https://www.tensorflow.org/versions) <br> AppleChip: [tensorflow-macos](https://developer.apple.com/metal/tensorflow-plugin/) | 2.9| `pip install tensorflow` |
-|[tensorflow-hub](https://pypi.org/project/tensorflow-hub/)| 0.12.0 | `pip install tensorflow-hub`|
-|[scipy](https://scipy.org) | 1.8.0 | `pip install scipy`|
-| [numpy](https://numpy.org/)                         | 1.22.4          | `pip install numpy`                         |
-|[pydub](https://pypi.org/project/pydub/)|0.25.1|`pip install pydub`|
-
-4. For Sensor:
-
-| Library                                          | Version         | Installation                                |
-| :-------------------------------------------------- | :-------------- | :------------------------------------------ |
-| [pandas](https://pandas.pydata.org/docs/getting_started/install.html) | 1.4.2| `pip install pandas` |
-| [scipy](https://scipy.org) | 1.8.0 | `pip install scipy`|
-| [numpy](https://numpy.org/)                         | 1.22.4          | `pip install numpy`                         |
-| [scikit-learn](https://scikit-learn.org/stable/) |0.23.2| `pip install scikit-learn` |
-| [pyod](https://pyod.readthedocs.io/en/latest/) |1.0.3| `pip install pyod`|
-| [combo](https://pypi.org/project/combo/)|0.1.3|`pip install combo`|
-
-
- ### Installation: 
-      - `Conda`
-      - `pip`
-      - `git clone`
-
-## Basic Usage
-
-  ## Functions & Definitions: 
-  1. Video: 
- 
-| Function                | Input                                                                                                                                                  | Output                                                                                                          |
-| :---------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
-| `format(path)`             | **path** `str`: path to a specific video                                                                                                        | **format** <br>`str`: video format \_ex ".mp4", ".mov",...                                                         |
-| `resolution(path)`         | **path** `str`: path to a specific video                                                                                                        | **resolution** <br>`str`: string containing the resolution of the video <br> `str` "720p"                          |
-| `length(path)`             | **path** `str`: path to a specific video or directory that contains all the videos                                                              | **length** <br>`int`: video length (seconds) <br>`list` : [101, ... 67]                                            |
-| `object_detection(path, modelname)` | **path** `str`: path to a specific video or directory that contains all the videos <br> **modelname** `str`: name of the object detection model | **Objects detected** <br> `dict`: {'person', 'dog'}                                                                |
-| `framerate(path)`          | **path** `str`: path to a specific video                                                                                                      | **frame rate** <br> `int`: framerate of specific video                                                             |
-| `brightness(path)`         | **path** `str`: path to a specific video                                                                                                        | **brightness** `int`: brightness of specific video                                                                 |
-| `time_created(path)`      | **path** `str`: path to a specific video                                                                                                        | **creation time** `str`: the date and time of when the video was created <br> `str` : "2022-05-29 23:22:59.599607" |
-| `check_artifacts(path)`      | **path** `str`: path to a specific video                                                                                                        | **percentage artifacts** `int`: the percentage of the video that contains artifacts (motion blur, too grainy, static) <br> `int` : "3.351" |
-| `bit_rate(path)`            | **path** `str`: path to a specific video                                                                                                        | **bit rate** <br> `int`: bit rate of specific audio                                                                |
-| `all_video`    | **path** `str`: path to a specific video or directory that contains all the videos <br> **modelname** `str`: name of the object detection model | saves all the metrics to video_metrics.csv |
-
-2. Audio: 
-
-| Function                | Input                                                                                                                                                  | Output                                                                                                          |
-| :---------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------- |
-| `audio_classify(wav_path)` | **wav_path** `str`: path of a .wav audio                                                                                                               | **sounds in audio** `list`: a list of the sounds inside the audio <br> `list` : ['Speech', 'Whistling', 'Alarm'] |
-| `length(wav_path)` | **wav_path** `str`:  path of a .wav audio  | **audio length** `int`: the length of the audio file in seconds <br> `int`: "104.5" |
-| `sample_rate(wav_path)` | **wav_path** `str`:  path of a .wav audio  | **audio frame rate** `int`: the frame rate of the audio <br> `int`: "16000" |
-| `root_mean_square(wav_path)` | **wav_path** `str`:  path of a .wav audio  | **audio rms** `int`: the rms of the audio <br> `int`: "800" |
-| `signaltonoise(wav_path)` | **wav_path** `str`:  path of a .wav audio  | **audio snr** `float`: the snr of the audio <br> `int`: "41.095" |
-| `all_audio`    | **path** `str`: path to a specific video or directory that contains all the videos | saves all the metrics to audio_metrics.csv |
-
-
-3. Sensor:
-
-| Function                     | Input                                                                                     | Output |
-| :--------------------------- | :---------------------------------------------------------------------------------------- | :----- |
-| `set_input_path(self, path)` | **path** (`str`): Path to the folder contains users' data.                                | `None` |
-| `set_RLC(self, included)`    | **included** (`bool`): A bool value to indicate whether RLC is included in the result DQM | `None` |
-| `set_SNR(self, included)`    | **included** (`bool`): A bool value to indicate whether SNR is included in the result DQM | `None` |
-| `set_VRC(self, included)`    | **included** (`bool`): A bool value to indicate whether VRC is included in the result DQM | `None` |
-| `set_SCR(self, included)`    | **included** (`bool`): A bool value to indicate whether SCR is included in the result DQM | `None` |
-| `set_SRC(self, included)`    | **included** (`bool`): A bool value to indicate whether SRC is included in the result DQM | `None` |
-| `set_MDR(self, included)`    | **included** (`bool`): A bool value to indicate whether MDR is included in the result DQM | `None` |
-| `set_APD(self, included)`    | **included** (`bool`): A bool value to indicate whether APD is included in the result DQM | `None` |
-| `compute_DQMs(self)`         | `None`                                                                                    | `None` |
-| `save_to_file(self, path)`   | **path** (`str`): Path to the output csv file.                                            | `None` |
-
-An explanation of the metrics supported for sensor QA:
-
-| Term   | Definition                                                                                                  | Category     |
-| :----- | :---------------------------------------------------------------------------------------------------------- | :----------- |
-| `APD`  | Anomalous Points Density - Ratio of outliers/anomalous data samples by the total number of samples.         | Correctness  |
-| `DQM`  | Data Quality Matrix - Matrix generated by the pipeline to demonstrate data quality.                         | N/A          |
-| `IRLR` | Interpretable Record Length Ratio - Ratio of records having non-zero length by the total number of records. | Completeness |
-| `MDR`  | Missing Data Ratio - Ratio of missing data samples by the total number of samples.                          | Completeness |
-| `RLC`  | Record Length Consistency - Uniformness of data record length within and across sensors.                    | Consistency  |
-| `SCR`  | Sensor Channel Ratio - Ratio of recorded sensor channels by the typical number of records.                  | Completeness |
-| `SNR`  | Signal-to-noise Ratio - Ratio of the desired signal amplitude by the noise amplitude.                       | Correctness  |
-| `SRC`  | Sampling Rate Consistency - Uniformness of the sampling rate within and across records.                     | Consistency  |
-| `VRC`  | Value Range Consistency - Uniformness of the value range within and across records.                         | Consistency  |
-
-## Helper functions
-
-1. Video
-
-
-| Function                     | Input                                                                        | Output                             |
-| :--------------------------- | :----------------------------------------------------------------------------| :--------------------------------- |
-| `download`                   | **url** `str`: A link to a video <br> **name** `str`: name of the video      | saves video to name.mp4            |
-| `extract_audios`             | **path** `str`: path to a specific video                                     | saves audio to video_name_Audio.mp3|
-
-2. Audio:
-
-| Function                     | Input                                                                        | Output                             |
-| :--------------------------- | :----------------------------------------------------------------------------| :--------------------------------- |
-| `download`                   | **url** `str`: A link to a video <br> **name** `str`: name of the audio      | saves video to name.mp3            |
-| `audio_to_array`             | **path** `str`: path to a specific audio                                     | returns a numpy array              |
-| `to_mono_wav`                | **path** `str`: path to a specific .wav or .mp3 audio                        | saves the .wav audio (mono channel)|
-| `waveform`                   | **path** `str`: path to a specific .wav audio                                | plots a waveform of the audio      |
 
 
 ## Examples:
@@ -178,4 +73,5 @@ output:
 
 # License
    
+   [MIT License](https://github.com/aid4mh/QPrism/blob/main/LICENSE)
     
