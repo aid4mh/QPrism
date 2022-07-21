@@ -2,7 +2,7 @@ import numpy as np
 import scipy.stats as stats
 from collections import Counter
 import math
-from modules.Sensor.pipeline_functions.preprocessing import *
+from QPrism.Sensor.pipeline_functions.preprocessing import *
 
 
 def sigmoid(x):

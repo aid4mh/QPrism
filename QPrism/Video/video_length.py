@@ -1,6 +1,6 @@
 import cv2 
 
-from modules.Video.frame_rate import fps
+from QPrism.Video.frame_rate import fps
 
 
 def video_length(video_path):

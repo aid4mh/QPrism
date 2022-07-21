@@ -5,19 +5,19 @@ import pandas as pd
 from pathlib import Path
 
 # Video functions
-from modules.Video.bit_rate import bitrate
-from modules.Video.brightness import video_brightness
-from modules.Video.creation_time import creation_time
-from modules.Video.frame_rate import fps
-from modules.Video.object_detection import detect_objects, load_model
-from modules.Video.video_format import video_format
-from modules.Video.video_length import video_length
-from modules.Video.video_resolution import video_resolution
-from modules.Video.artifacts import noise_detection
+from QPrism.Video.bit_rate import bitrate
+from QPrism.Video.brightness import video_brightness
+from QPrism.Video.creation_time import creation_time
+from QPrism.Video.frame_rate import fps
+from QPrism.Video.object_detection import detect_objects, load_model
+from QPrism.Video.video_format import video_format
+from QPrism.Video.video_length import video_length
+from QPrism.Video.video_resolution import video_resolution
+from QPrism.Video.artifacts import noise_detection
 
 # Helpers 
-from modules.Video.helpers.extract_audios import extract_audios
-from modules.Video.helpers.video_paths import video_paths
+from QPrism.Video.helpers.extract_audios import extract_audios
+from QPrism.Video.helpers.video_paths import video_paths
 
 
 class Video:

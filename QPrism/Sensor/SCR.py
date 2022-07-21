@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from modules.Sensor.data_processing import *
+from QPrism.Sensor.data_processing import *
 from collections import Counter
 
 def compute_SCR_multiple(data_list):

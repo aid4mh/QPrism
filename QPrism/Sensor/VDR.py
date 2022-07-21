@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-from modules.Sensor.data_processing import *
-from modules.Sensor.pipeline_functions.single_function_DQMs import valid_data_ratio
+from QPrism.Sensor.data_processing import *
+from QPrism.Sensor.pipeline_functions.single_function_DQMs import valid_data_ratio
 
 
 def compute_VDR_single(record_df):

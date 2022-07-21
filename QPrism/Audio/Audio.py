@@ -5,16 +5,16 @@ import pandas as pd
 from pathlib import Path
 
 # Audio functions
-from modules.Audio.audio_classification import audio_classification
-from modules.Audio.audio_length import audio_length
-from modules.Audio.audio_sample_rate import sample_rate
-from modules.Audio.audio_rms import rms
-from modules.Audio.snr import snr
+from QPrism.Audio.audio_classification import audio_classification
+from QPrism.Audio.audio_length import audio_length
+from QPrism.Audio.audio_sample_rate import sample_rate
+from QPrism.Audio.audio_rms import rms
+from QPrism.Audio.snr import snr
 
 # Helpers
-from modules.Audio.helpers.audio_to_array import to_array
-from modules.Audio.helpers.audio_paths import audio_paths
-from modules.Audio.helpers.to_mono_wav import to_mono_wav
+from QPrism.Audio.helpers.audio_to_array import to_array
+from QPrism.Audio.helpers.audio_paths import audio_paths
+from QPrism.Audio.helpers.to_mono_wav import to_mono_wav
 
 
 class Audio:

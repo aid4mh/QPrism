@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
-from modules.Sensor.data_processing import *
-from modules.Sensor.pipeline_functions.preprocessing import *
-from modules.Sensor.pipeline_functions.single_function_DQMs import *
+from QPrism.Sensor.data_processing import *
+from QPrism.Sensor.pipeline_functions.preprocessing import *
+from QPrism.Sensor.pipeline_functions.single_function_DQMs import *
 
 
 def compute_MDR_single(record_df):

@@ -1,6 +1,6 @@
 from pyod.models.feature_bagging import FeatureBagging
 import pandas as pd
-from modules.Sensor.pipeline_functions.preprocessing import *
+from QPrism.Sensor.pipeline_functions.preprocessing import *
 
 import warnings
 warnings.filterwarnings("ignore")
