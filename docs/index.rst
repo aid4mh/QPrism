@@ -21,7 +21,7 @@ Contents
    usage
    api
    glossary
-   `Git repo <https://github.com/aid4mh/QPrism>`_
+   Git repo <https://github.com/aid4mh/QPrism>
 
 Acknowledgements
 ----------------
