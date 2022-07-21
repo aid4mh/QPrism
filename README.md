@@ -8,14 +8,14 @@ QPrism fills the current gap by allowing researchers and developers to perform d
 
 ## Installation
 
-    The installation can be done with pip, this will automatically install all the dependencies.
+The installation can be done with pip, this will automatically install all the dependencies.
 
-    ` $ (sudo) pip install QPrism `
+     $ (sudo) pip install QPrism 
 
 
 ## Documentation
 
-    The full documentation for QPrism can be accessed [here](https://qprism.readthedocs.io/en/latest/).
+The full documentation for QPrism can be accessed [here](https://qprism.readthedocs.io/en/latest/).
  
 
 
