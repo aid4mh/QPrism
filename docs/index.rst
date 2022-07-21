@@ -7,7 +7,7 @@ and the genrality that the library applies to any data converted to the specifie
 **To be filled in, current statement of need is a bit subjective and need modification in my opinion.** 
 
 Check out the :doc:`usage` section for further information, including
-how to :ref:`install` the project.
+the :ref:`install` of the project.
 
 .. note::
 
@@ -21,7 +21,6 @@ Contents
    usage
    api
    glossary
-   examples
 
 
 Acknowledgements

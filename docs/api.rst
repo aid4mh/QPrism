@@ -7,11 +7,13 @@ concepts repeated across the API, see :doc:`glossary`.
 
 Video
 -----
-
+.. toctree::
+   Video_DQM
 
 Audio
 -----
-
+.. toctree::
+   Audio_DQM
 
 Sensor
 ------
