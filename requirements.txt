@@ -13,3 +13,4 @@ scipy
 scikit-learn
 pyod
 combo
+moviepy
