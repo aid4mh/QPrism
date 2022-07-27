@@ -13,11 +13,17 @@ QPrism fills the current gap by allowing researchers and developers to perform d
 
 The installation can be done with pip. since pip does not resolve the dependencies' version efficiently, please install QPrism with the following steps.
 
-  ```$ python3 -m pip install --upgrade pip```
+  ```
+  $ python3 -m pip install --upgrade pip
+  ```
 
-  ```$ pip install -r https://raw.githubusercontent.com/aid4mh/QPrism/main/requirements.txt```
+  ```
+    $ pip install -r https://raw.githubusercontent.com/aid4mh/QPrism/main/requirements.txt
+  ```
 
-  ```$ pip install --no-deps -i https://test.pypi.org/simple/ QPrism==0.1.6```
+  ```
+  $ pip install --no-deps -i https://test.pypi.org/simple/ QPrism==0.1.6
+  ```
 
 
 ## Documentation
