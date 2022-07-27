@@ -26,9 +26,6 @@ def count_outliers(record, feature_names):
     record = record.copy()
     record = features_to_float(record,feature_names)
     record = pd.DataFrame.from_dict(record)
-    #for feature in feature_names:
-    #    if scaler == 'standard':
-    #        record[feature] = standard_scaler(record[feature], [feature])
     record = normalize_timestamp(record, ((list(record.keys()))[0]))
     record = features_to_float(record, feature_names)
     record = multi_var_to_uni(record, feature_names)
