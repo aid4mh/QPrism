@@ -11,9 +11,11 @@ QPrism fills the current gap by allowing researchers and developers to perform d
 
 ## Installation
 
-The installation can be done with pip, this will automatically install all the dependencies.
+The installation can be done with pip. since pip does not resolve the dependencies' version efficiently, please install QPrism with the following steps.
 
-     $ (sudo) pip install QPrism 
+     $ pip install -r https://raw.githubusercontent.com/aid4mh/QPrism/main/requirements.txt 
+
+     $ pip install --no-deps -i https://test.pypi.org/simple/ QPrism
 
 
 ## Documentation
