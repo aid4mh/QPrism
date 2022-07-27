@@ -7,7 +7,7 @@ Installation
 ------------
 
 To use QPrism, the installation can be done with pip.
-since pip does not resolve the dependencies' version efficiently, please install QPrism with the following steps.
+Since pip does not resolve the dependencies' version efficiently, please install QPrism with the following steps.
 
 .. code-block:: console
 
