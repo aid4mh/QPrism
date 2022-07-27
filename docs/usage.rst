@@ -19,7 +19,7 @@ Since pip does not resolve the dependencies' version efficiently, please install
 
 .. code-block:: console
 
-   $ pip install --no-deps -i https://test.pypi.org/simple/ QPrism==0.1.6
+   $ pip install --no-deps -i https://test.pypi.org/simple/ QPrism==0.1.7
 
 Examples
 ----------------

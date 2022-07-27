@@ -8,8 +8,8 @@ project = 'QPrism'
 copyright = 'TBD'
 author = 'Ramzi Halabi, Zixiong Lin, Rahavi Selvarajan, Jana Kabrit'
 
-release = '0.1'
-version = '0.1.6'
+release = '0.1.7'
+version = '0.1.7'
 
 # -- General configuration
 
