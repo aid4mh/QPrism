@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "QPrism"
+version = "0.1.2"
+authors = [
+  { name="Ramzi Halabi", email="ramzi.o.halabi@gmail.com" },
+  { name="Zixiong Lin", email="jueji.lin@mail.utoronto.ca" },
+  { name="Rahavi Selvarajan", email="rahavi.selvarajan@mail.utoronto.ca" },
+  { name="Jana Kabrit", email="jana.kabrit@outlook.com" },
+]
+description = "A data quality assessment package"
+readme = "README.md"
+license = { file="LICENSE" }
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+keywords = ["sensor", "audio", "video", "quality assessment", "qprism"]
+dependencies = [
+  "pandas>=1.2.4",
+  "numpy>=1.19.0",
+  "opencv-python>=4.5.3.56",
+  "ffprobe>=0.5",
+  "Pillow>=9.2.0",
+  "torch>=1.12.0",
+  "torchvision>=0.8.2",
+  "torchaudio>=0.12.0",
+  "tensorflow>=2.3.1",
+  "tensorflow-hub>=0.10.0",
+  "scipy>=1.5.2",
+  "scikit-learn>=0.23.2",
+  "pyod>=1.0.1",
+  "combo",
+]
+
+packages = [
+	{include = "QPrism"},
+]
+
+[project.urls]
+homepage = "https://github.com/aid4mh/QPrism"
+documentation = "https://qprism.readthedocs.io/en/latest/index.html"
+repository = "https://github.com/aid4mh/QPrism"
+
+
+
