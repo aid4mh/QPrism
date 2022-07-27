@@ -6,10 +6,10 @@ sys.path.insert(0, os.path.abspath('..'))
 
 project = 'QPrism'
 copyright = 'TBD'
-author = 'TBD'
+author = 'Ramzi Halabi, Zixiong Lin, Rahavi Selvarajan, Jana Kabrit'
 
 release = '0.1'
-version = '0.1.0'
+version = '0.1.6'
 
 # -- General configuration
 

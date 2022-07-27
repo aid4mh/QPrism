@@ -1,10 +1,9 @@
 Welcome to QPrism's documentation!
 ===================================
 
-**QPrism** is a Python library that can thoroughly assess the quality of video, audio, and sensor data.
+**QPrism** is a Python library that can comprehensively assess the quality of video, audio, and sensor data.
 It provides user the flexibility to compute any supported metrics that are relevant to their research, 
 and the genrality that the library applies to any data converted to the specified structure. 
-**To be filled in, current statement of need is a bit subjective and need modification in my opinion.** 
 
 Check out the :doc:`usage` section for further information, including
 the :ref:`install` of the project.
