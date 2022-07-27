@@ -450,9 +450,10 @@ class DQM_multiple_file:
         Return the SNR score for given input data as a str.
         SNR must be included in the DQM class.
         """
-        SNR_index = self.fields.index('SNR')
-        if (SNR_index==-1):
-            return "Not computed"
+        try:
+            SNR_index = self.fields.index('SNR')
+        except ValueError:
+            return "SNR is not computed according to the configuration"
         return self.score[SNR_index]
     
     def get_VDR(self):
@@ -460,9 +461,10 @@ class DQM_multiple_file:
         Return the VDR score for given input data as a str.
         VDR must be included in the DQM class.
         """
-        VDR_index = self.fields.index('VDR')
-        if (VDR_index==-1):
-            return "Not computed"
+        try:
+            VDR_index = self.fields.index('VDR')
+        except ValueError:
+            return "VDR is not computed according to the configuration"
         return self.score[VDR_index]
     
     def get_SCR(self):
@@ -470,9 +472,10 @@ class DQM_multiple_file:
         Return the SCR score for given input data as a str.
         SCR must be included in the DQM class.
         """
-        SCR_index = self.fields.index('SCR')
-        if (SCR_index==-1):
-            return "Not computed"
+        try:
+            SCR_index = self.fields.index('SCR')
+        except ValueError:
+            return "SCR is not computed according to the configuration"
         return self.score[SCR_index]
     
     def get_SRC(self):
@@ -480,9 +483,10 @@ class DQM_multiple_file:
         Return the SRC score for given input data as a str.
         SRC must be included in the DQM class.
         """
-        SRC_index = self.fields.index('SRC')
-        if (SRC_index==-1):
-            return "Not computed"
+        try:
+            SRC_index = self.fields.index('SRC')
+        except ValueError:
+            return "SRC is not computed according to the configuration"
         return self.score[SRC_index]
     
     def get_MDR(self):
@@ -490,9 +494,10 @@ class DQM_multiple_file:
         Return the MDR score for given input data as a str.
         MDR must be included in the DQM class.
         """
-        MDR_index = self.fields.index('MDR')
-        if (MDR_index==-1):
-            return "Not computed"
+        try:
+            MDR_index = self.fields.index('MDR')
+        except ValueError:
+            return "MDR is not computed according to the configuration"
         return self.score[MDR_index]
     
     def get_APD(self):
@@ -500,9 +505,10 @@ class DQM_multiple_file:
         Return the APD score for given input data as a str.
         APD must be included in the DQM class.
         """
-        APD_index = self.fields.index('APD')
-        if (APD_index==-1):
-            return "Not computed"
+        try:
+            APD_index = self.fields.index('APD')
+        except ValueError:
+            return "APD is not computed according to the configuration"
         return self.score[APD_index]
     
     def get_RLC(self):
@@ -510,9 +516,10 @@ class DQM_multiple_file:
         Return the RLC score for given input data as a str.
         RLC must be included in the DQM class.
         """
-        RLC_index = self.fields.index('RLC')
-        if (RLC_index==-1):
-            return "Not computed"
+        try:
+            RLC_index = self.fields.index('RLC')
+        except ValueError:
+            return "RLC is not computed according to the configuration"
         return self.score[RLC_index]
     
     def get_VRC(self):
@@ -520,9 +527,10 @@ class DQM_multiple_file:
         Return the VRC score for given input data as a str.
         VRC must be included in the DQM class.
         """
-        VRC_index = self.fields.index('VRC')
-        if (VRC_index==-1):
-            return "Not computed"
+        try:
+            VRC_index = self.fields.index('VRC')
+        except ValueError:
+            return "VRC is not computed according to the configuration"
         return self.score[VRC_index]
     
     def save_avg_DQM_to_file(self, path:str):
