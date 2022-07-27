@@ -1,9 +1,12 @@
 # QPrism
 
 ## Statement of Need
-While the number of research involving heterogeneous datasets is rapidly increasing, with the big data market having a Compound Annual Growth Rate (CAGR) of 13.2% (Statista, 2022), there isn't a dedicated package that allows researchers to perform data-driven data quality assessment on heterogeneous real-world datasets. Nevertheless, a limited number of existing libraries  contain single-type data quality assessment functions, mostly relying on application-specific data assumptions. For audio, the avaible packages' major area of interest is music data processing and visualization e.g. Python-based Librosa and Audioop and R-based Essentia. For video data quality assessment, we only found the QVA package, which aims at making sub-groups in a video dataset based on similar qualities and requires the user to be on a Windows machine. For sensor data, each of the available quality assessment packages is restricted to a specific data quality aspect. For instance, PyOD contains a range of functions for outlier detection, while SciPy provides outlier detection and signal-to-noise ratio (SNR) computation functions. However, there is no existing open-source package which performs sensor data quality assessment on across multiple dimensions e.g. completeness, correctness, and consistency. 
+While the healthcare big data market is projected to increase from around 11.5 billion to nearly 70 billion U.S. dollars between 2016 and 2025 (Statista, 2022), there isn't a comprehensive package that allows researchers to perform data-driven quality assessment on multimodal real-world digital health data. In fact, data quality covers multiple dimensions e.g. completeness, correctness, consistency, which ought to be jointly investigated for the quantitative assessment of data availability and usability prior to data analysis. This calls for the development of multimodal sensor data quality metrics (DQM),  ideally in a single module, permitting well-rounded quality assessment and reporting for researchers and analysts.
 
-QPrism fills the current gap by allowing researchers and developers to perform data quality analysis, and devise plans for pre-analytical quality control plans. Thus, QPrism covers the need for having access to a broad spectrum of data quality metrics in a single Python package for comprehensive exploration of heterogeneous data. 
+Despite the major need for such quality assessment packages in digital health and across all data analytical fields, the currently available tools partially address the scientists’ and analysts’ needs. The available functions are mostly data descriptive metrics that require further contextualization and application-specific tuning to be used as DQMs, and the available modules and packages cover a single quality dimension e.g. noise level, anomaly level, object detection. For instance, PyOD contains a wide range of functions for outlier detection, while SciPy provides signal-to-noise ratio (SNR) computation functions as well as statistical descriptors that may be customized as DQMs. Specifically for audio, Python-based Librosa and Audioop, and R-based Essentia provide functions for audio processing and feature extraction, requiring further development to serve as DQMs. Lastly, for video data quality assessment, the QVA package performs common quality-based video clustering, however requiring the user to be on a Windows machine. 
+
+QPrism fills the current gap by allowing researchers and developers to perform data quality analysis, and devise plans for pre-analytical quality control plans. Thus, QPrism covers the need for having access to a broad spectrum of data quality metrics in a single Python package for comprehensive data-driven quality assessment of real-word data. 
+
 
 
 ## Installation
@@ -52,7 +55,7 @@ output:
   - audio demo notebook
 
 
-## Contributing to the project
+# Contributing to the project
 
 
 # Acknowledgments

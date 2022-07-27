@@ -17,7 +17,7 @@ from QPrism.Audio.helpers.audio_paths import audio_paths
 from QPrism.Audio.helpers.to_mono_wav import to_mono_wav
 
 
-class Audio:
+class Audio_DQM:
     def __init__(self):
         self.aud_metrics = ['classification', 'audio_length', 'sample_rate', 'rms'
                             'signal_to_noise']
@@ -155,8 +155,7 @@ class Audio:
 
         Returns
         -------
-        int: the rms value of the audio
-            "880"
+        int : the rms value of the audio
         """
 
         if os.path.isdir(path):
@@ -176,9 +175,9 @@ class Audio:
         """
         Creates a csv file with all the audio metrics
 
-        Parameters:
+        Parameters
         ----------
-        path: path to single audio file or folder
+        path : path to single audio file or folder
 
         Returns
         -------

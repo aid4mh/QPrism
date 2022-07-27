@@ -20,7 +20,7 @@ from QPrism.Video.helpers.extract_audios import extract_audios
 from QPrism.Video.helpers.video_paths import video_paths
 
 
-class Video:
+class Video_DQM:
 
     def __init__(self):
         self.vid_metrics = ['bitrate', 'brightness', 'creation_time', 'framerate',\
@@ -318,7 +318,7 @@ class Video:
         """
         Creates a csv file with all the video metrics
 
-        Parameters:
+        Parameters
         ----------
         path: path to single video file or folder
         modelname: yolov5 model name for object detection
