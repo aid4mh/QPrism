@@ -18,7 +18,7 @@ The installation can be done with pip. since pip does not resolve the dependenci
   ```
 
   ```
-    $ pip install -r https://raw.githubusercontent.com/aid4mh/QPrism/main/requirements.txt
+  $ pip install -r https://raw.githubusercontent.com/aid4mh/QPrism/main/requirements.txt
   ```
 
   ```
