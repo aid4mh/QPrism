@@ -31,14 +31,12 @@ class Audio_DQM:
 
         Parameters
         ----------
-        path : path to a folder or a file
+        path : A path to a folder or a file.
 
         Returns
         -------
-        dict (incase of folder)
-        int (incase of file)
-            dict : {'audio_file1' : 101, ... 'audio_filen' : 89}
-            int : 101
+        audio_length : The length of the input audio if the input path is a file.
+                       A dict matching the input audio files to their length in the input path is a folder.
         """
 
         if os.path.isdir(path):
