@@ -14,7 +14,7 @@ import time
 import numpy as np
 
 
-class DQM_single_file:
+class DQM_single_record:
     """
     A class represents the data quality matrix.
     """
@@ -225,7 +225,7 @@ class DQM_single_file:
         print("Data successfuly saved.")
 
 
-class DQM_multiple_file:
+class DQM_multiple_record:
     """
     A class represents the data quality matrix for multiple files in one directory.
     """
