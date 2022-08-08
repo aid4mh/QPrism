@@ -29,16 +29,14 @@ class Audio_DQM:
         This functions calls the audio_length function and 
         gives the length for both a folder of audios or a single audio file.
 
+        Returns the length of the input audio if the input path is a file. 
+        Returns a dict matching the input audio files to their length if the input path is a folder.
+
         Parameters
         ----------
             path : str
                 A path to a folder or a file.
 
-        Returns
-        -------
-            audio_length : int or dict 
-                The length of the input audio if the input path is a file. 
-                A dict matching the input audio files to their length if the input path is a folder.
         """
 
         if os.path.isdir(path):
@@ -61,16 +59,13 @@ class Audio_DQM:
         This functions calls the sample_rate function and 
         gives the bit rate for both a folder of audios or a single audio file.
 
+        Returns the sample rate of the input audio if the input path is a file. 
+        Returns a dict matching the input audio files to their sample rate if the input path is a folder.
+
         Parameters
         ----------
-        path : path to a folder or a file
-
-        Returns
-        -------
-        dict (incase of folder)
-        int (incase of file)
-            dict : {'audio_file1' : 1024, ... 'audio_filen' : 1399}
-            int : 1024
+            path : str
+                A path to a folder or a file.
         """
 
         if os.path.isdir(path):
@@ -90,18 +85,16 @@ class Audio_DQM:
         """
         Get a list of all the sounds in an audio
 
-        This function returns a list of all the prominent sounds inside the audio
+        This function identifies all the prominent sounds inside the audio
+
+        Returns a list of prominent sounds in the input audio if the input path is a file. 
+        Returns a dict matching the input audio files to their list of prominent sounds if the input path is a folder.
 
         Parameters
         ----------
-        path : path to a folder or a file
+            path : str
+                A path to a folder or a file.
 
-        Returns
-        -------
-        dict (incase of folder)
-        list (incase of file)
-            dict : {'audio_file1' : ['Speech', 'Whistling', 'Alarm'], ... 'audio_filen' : 'Speech', 'Alarm']}
-            list : ['Speech', 'Whistling', 'Alarm']
         """
         if os.path.isdir(path):
             audio_files = audio_paths(path)
@@ -118,17 +111,15 @@ class Audio_DQM:
 
     def root_mean_square(self, path: str):
         """
-        RMS level (root mean squared) is just proportional to the amount of energy over a period of time in the signal. This can be used to distinguish audios that are louder from each other.
-        This function returns the rms value of a given function.
+        Compute the RMS level of the audio.
 
+        Returns the RMS level of the input audio if the input path is a file.
+        Returns a dict matching the input audio files to their RMS level if the input path is a folder.
+       
         Parameters
         -----------
-        wav_path : path to a .wav audio
-
-        Returns
-        -------
-        int: the rms value of the audio
-            "880"
+            path : str
+                A path to a folder or a file.
         """
 
         if os.path.isdir(path):
@@ -146,16 +137,15 @@ class Audio_DQM:
 
     def signaltonoise(self, path: str):
         """
-        RMS level (root mean squared) is just proportional to the amount of energy over a period of time in the signal. This can be used to distinguish audios that are louder from each other.
-        This function returns the rms value of a given function.
+        Compute the signal-to-noise ratio of the audio.
+
+        Returns the SNR of the input audio if the input path is a file.
+        Returns a dict matching the input audio files to their SNR if the input path is a folder.
 
         Parameters
         -----------
-        wav_path : path to a .wav audio
-
-        Returns
-        -------
-        int : the rms value of the audio
+            path : str
+                path to a .wav audio
         """
 
         if os.path.isdir(path):
@@ -171,17 +161,16 @@ class Audio_DQM:
         else:
             return round(snr(path), 3)
 
-    def all_audio(self, path: str):
+    def all_metrics(self, path: str):
         """
-        Creates a csv file with all the audio metrics
+        Creates a csv file with all the audio metrics included in the current working directory.
+        The created file will be named as "asudio_metrics.csv".
 
         Parameters
         ----------
-        path : path to single audio file or folder
+            path : str
+                A path to single audio file or folder
 
-        Returns
-        -------
-        Writes a csv file to the path "audio_metrics.csv"
         """
 
         if os.path.isdir(path):

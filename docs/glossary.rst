@@ -4,8 +4,9 @@ Glossary
 Audio Module
 ------------
 
-word
-  explanation
+RMS
+   RMS level (root mean squared) of an audio is proportional to the amount of energy over a period of time in the signal.
+   This can be used to distinguish audios that are louder from each other.
 
 
 Video Module
