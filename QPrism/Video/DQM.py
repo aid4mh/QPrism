@@ -29,20 +29,16 @@ class Video_DQM:
 
     def length(self, path:str):
         """
-        Get the length of the video
-        This functions calls the video_length function and 
-        gives the length for both a folder of videos or a single video file.
+        This function gives the length for both a folder of audios or a single audio file.
+
+        Returns the length of the input audio if the input path is a file. 
+        Returns a dict matching the input audio files to their length if the input path is a folder.
 
         Parameters
         ----------
-        path : path to a folder or a file
+            path : str
+                A path to a folder or a file.
 
-        Returns
-        -------
-        dict (incase of folder)
-        int (incase of file)
-            dict : {'video_file1' : 101, ... 'video_filen' : 89}
-            int : 101
         """
 
         if os.path.isdir(path):
@@ -60,20 +56,12 @@ class Video_DQM:
 
     def resolution(self, path:str):
         """
-        Get the resolution of the video
-        This functions calls the video_resolution function and 
-        gives the resolution for both a folder of videos or a single video file.
+        This function returns the resolution of a video or the videos in given folder
 
         Parameters
         ----------
-        path : path to a folder or a file
-
-        Returns
-        -------
-        dict (incase of folder)
-        str (incase of file)
-            dict : {'video_file1' : '1280 x 820', ... 'video_filen' : '640 X 640'}
-            str : '1280 x 820'
+            path : str
+                path to a folder or a file
         """
 
         if os.path.isdir(path):
@@ -123,19 +111,13 @@ class Video_DQM:
     def bit_rate(self, path:str):
         """
         Get the bit rate of the video
-        This functions calls the bit_rate function and 
-        gives the bit rate for both a folder of videos or a single video file.
+        
+        Returns the bit rate for input video or each video in the input folder.
 
         Parameters
         ----------
-        path : path to a folder or a file
-
-        Returns
-        -------
-        dict (incase of folder)
-        int (incase of file)
-            dict : {'video_file1' : 1024, ... 'video_filen' : 1399}
-            int : 1024
+            path : str
+                path to a folder or a file
         """
 
         if os.path.isdir(path):
@@ -167,19 +149,15 @@ class Video_DQM:
 
     def object_detection(self, path:str, modelname:str):
         """
-        Get the objects present in the video
-        This functions calls the detect_objects function and gives the objects present in the video.
+        This function detect all the objects present in the video.
+
+        Returns the detected objects in the video if the input path is a file.
+        Returns a dict matching the input videos to their detected objects.
 
         Parameters
         ----------
-        path : path to a folder or a file
-
-        Returns
-        -------
-        nested dict (incase of folder)
-        dict (incase of file)
-            nested dict : {'video_file1' : {'person', 'dog', 'tie'}, ... 'video_filen' : {'person', 'dog'}}
-            dict : {'person', 'dog', 'tie'}
+            path : str
+                path to a folder or a file
         """
 
         if os.path.isdir(path):
@@ -199,20 +177,15 @@ class Video_DQM:
 
     def framerate(self, path:str):
         """
-        Get the framerate of the video
-        This functions calls the fps function and 
-        gives the frame rate for both a folder of videos or a single video file.
+        This function get the framerate of the video.
+
+        Returns the frame rate of the video if the input path is a file.
+        Returns a dict matching the input videos to their frame rate if the input path is a folder.
 
         Parameters
         ----------
-        path : path to a folder or a file
-
-        Returns
-        -------
-        dict (incase of folder)
-        int (incase of file)
-            dict : {'video_file1' : 29, ... 'video_filen' : 37}
-            str : 29
+            path : str
+                path to a folder or a file
         """
 
         if os.path.isdir(path):
@@ -230,18 +203,15 @@ class Video_DQM:
 
     def brightness(self, path:str):
         """
-        This function gives the brightness of a single video file or a folder containing the videos
+        This function gives the brightness of the video.
+
+        Returns the brightness of the video if the input path is a file.
+        Returns a dict matching the input videos to their frame rate if the input path is a folder.
 
         Parameters 
         ----------
-        path : path to a specific video or a folder containing videos
-
-        Returns
-        -------
-        dict : if folder is passed
-        float : if single filepath is passed
-            dict : {'video_file1' : 28.5985, ... 'video_filen' : 68.5673}
-            float : 34.6783
+            path : str
+                path to a folder or a file
         """
 
         if os.path.isdir(path):
@@ -258,19 +228,15 @@ class Video_DQM:
 
     def time_created(self, path:str):
         """
-        Get the creation time of a video
+        This function gets the creation time of a video.
 
-        This function returns the date of when the video was created
+        Returns the creation time of the video if the input path is a file.
+        Returns a dict matching the input videos to their creation time if the input path is a folder.
 
         Parameters
         -----------
-        video_path : path to a specific video 
-
-        Returns
-        -------
-        string
-            "2022-05-29 23:22:59.599607"
-
+            path : str
+                path to a folder or a file
         """
 
         if os.path.isdir(path):
@@ -288,18 +254,15 @@ class Video_DQM:
 
     def check_artifacts(self, path:str):
         """
-        Get how much of the video that contains video artifacts
+        This function gets how much of the video that contains video artifacts
 
-        This function returns the percentage of the video that contains artifacts (motion blur, too grainy, static)
+        Returns the percentage of the video that contains artifacts (motion blur, too grainy, static) if the input path is a file.
+        Returns a dict mathing the input videos to their artifacts percentage if the input path is a folder.
 
         Parameters
         -----------
-        video_path : path to a video
-
-        Returns
-        -------
-        float
-            3.351
+            path : str
+                path to a folder or a file
         """
 
         if os.path.isdir(path):
@@ -314,18 +277,20 @@ class Video_DQM:
             return noise_detection(path)
 
 
-    def all_video(self, path:str, modelname:str):
+    def save_csv(self, path:str, output_path:str, modelname='yolov5s'):
         """
-        Creates a csv file with all the video metrics
+        Creates a csv file consists of all the video metrics.
+
+        Saves a csv file to the input path with all video quality metrics 
 
         Parameters
         ----------
-        path: path to single video file or folder
-        modelname: yolov5 model name for object detection
-
-        Returns
-        -------
-        Writes a csv file to the path "video_metrics.csv"
+            path : str
+                path to single video file or folder
+            output_path : str
+                path to the output csv file
+            modelname : str
+                yolov5 model name for object detection
         """
 
         if os.path.isdir(path):
@@ -339,8 +304,8 @@ class Video_DQM:
             writer = csv.writer(file)
             writer.writerow(header)
 
-        csv_path = str(os.getcwd()) + '/video_metrics.csv'  
-        metrics = pd.read_csv(csv_path)
+        csv_path = output_path
+        metrics = pd.DataFrame()
 
         for i, video in enumerate(video_files):
             data_row = []

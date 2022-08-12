@@ -135,7 +135,7 @@ class Audio_DQM:
         else:
             return rms(path)
 
-    def signaltonoise(self, path: str):
+    def SNR(self, path: str):
         """
         Compute the signal-to-noise ratio of the audio.
 
@@ -161,15 +161,18 @@ class Audio_DQM:
         else:
             return round(snr(path), 3)
 
-    def all_metrics(self, path: str):
+    def save_csv(self, path: str, output_path: str):
         """
-        Creates a csv file with all the audio metrics included in the current working directory.
-        The created file will be named as "asudio_metrics.csv".
+        Creates a csv file consists of all the audio metrics.
+
+        Saves the csv file to output_path.
 
         Parameters
         ----------
             path : str
                 A path to single audio file or folder
+            output_path : str
+                path to the output csv file
 
         """
 
@@ -184,8 +187,8 @@ class Audio_DQM:
             writer = csv.writer(file)
             writer.writerow(header)
 
-        csv_path = str(os.getcwd()) + '/audio_metrics.csv'
-        metrics = pd.read_csv(csv_path)
+        csv_path = output_path
+        metrics = pd.DataFrame()
 
         for i, audio in enumerate(audio_files):
             data_row = []
