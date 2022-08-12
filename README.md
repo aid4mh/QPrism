@@ -34,57 +34,32 @@ The full documentation for QPrism can be accessed [here](https://qprism.readthed
 
 
 ## Examples:
-1. Video:
 
-Code: `Video = qprism.Video()` <br>
-`framerate = Video.framerate(path='example_video.mp4')` <br>
-`print("Frame rate of the video is", framerate)
-`
-
-output: `Frame rate of the video is 60`
-
-2. Audio:
-
-Code: `Audio = qprism.Audio()` <br>
-`sounds = Audio.classification(path='example_video.mp4')` <br>
-`print("Sounds in the audio are:", sounds)`
-
-output: `Sounds in the audio are: ['Speech', 'Whistling', 'Alarm']`
-
-3. Sensor: 
-
-Code: `Sensor = qprism.Sensor()` <br>
-
-output:
+We have provided throughout demo notebooks in Google Colab covered all functions.
+The notebooks can be accessed [here](https://github.com/aid4mh/QPrism/tree/main/tests).
+Note: In the sensor folder, it also contains notebooks that can validate each metric we have created.
 
 
-## Demo notebooks
-
-  - [sensor demo notebook](https://github.com/aid4mh/QPrism/tree/main/tests/Sensor)
-  - [Video demo notebook](https://github.com/aid4mh/QA-module/blob/main/demo_video.ipynb)
-  - audio demo notebook
+## Contributing to the project
 
 
-# Contributing to the project
+## Acknowledgments
 
 
-# Acknowledgments
-
-
-# Authors
+## Authors
 - [@Ramzi Halabi](https://github.com/RamziHalabi)
 - [@RahaviSelvarajan](https://github.com/RahaviSelvarajan)
 - [@Jana-kabrit](https://github.com/Jana-kabrit)
 - [@ZixiongLin1](https://github.com/ZixiongLin1)
 
 
-# Contact 
+## Contact 
 
 - to report issues 
 - to seek support
 
 
-# License
+## License
    
    [MIT License](https://github.com/aid4mh/QPrism/blob/main/LICENSE)
     
