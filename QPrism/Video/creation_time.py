@@ -19,14 +19,12 @@ def creation_time(video_path):
         "2022-05-29 23:22:59.599607"
 
     """
-    working_path = str(os.getcwd())
-    video_directory = str(os.path.dirname(video_path))
-    if working_path != video_directory:
-        vid_dir = input("Enter path of video directory: ")
-        os.chdir(vid_dir)
     byteD = subprocess.check_output(['ffprobe', '-v', 'quiet', video_path, '-print_format',
                                      'json', '-show_entries', 'stream=index,codec_type:stream_tags=creation_time:format_tags=creation_time'])
     dict = byteD.decode("UTF-8")
     mydata = ast.literal_eval(dict)
-    time = mydata['format']['tags']['creation_time']
+    try:
+        time = mydata['format']['tags']['creation_time']
+    except(KeyError):
+        time = 'Creation time not availale for this video'
     return str(time).split('.')[0]
