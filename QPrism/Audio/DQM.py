@@ -135,32 +135,6 @@ class Audio_DQM:
         else:
             return rms(path)
 
-    def SNR(self, path: str):
-        """
-        Compute the signal-to-noise ratio of the audio.
-
-        Returns the SNR of the input audio if the input path is a file.
-        Returns a dict matching the input audio files to their SNR if the input path is a folder.
-
-        Parameters
-        -----------
-            path : str
-                path to a .wav audio
-        """
-
-        if os.path.isdir(path):
-            audio_files = audio_paths(path)
-            snr_values = {}
-
-            for file in audio_files:
-                if not file.startswith('.'):
-                    snr_values[str(Path(file).stem)] = round(snr(file), 3)
-
-            return pd.DataFrame(snr_values.items(), columns=['Audios', 'SNR'])
-
-        else:
-            return round(snr(path), 3)
-
     def save_csv(self, path: str, output_path: str):
         """
         Creates a csv file consists of all the audio metrics.
@@ -197,7 +171,6 @@ class Audio_DQM:
             data_row.append(self.length(audio))
             data_row.append(self.sample_rate(audio))
             data_row.append(self.audio_classify(audio))
-            data_row.append(self.signaltonoise(audio))
             data_row.append(self.root_mean_square(audio))
 
             data_series = pd.Series(data_row, index=metrics.columns)
