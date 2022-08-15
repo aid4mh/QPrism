@@ -9,7 +9,6 @@ from QPrism.Audio.audio_classification import audio_classification
 from QPrism.Audio.audio_length import audio_length
 from QPrism.Audio.audio_sample_rate import sample_rate
 from QPrism.Audio.audio_rms import rms
-from QPrism.Audio.snr import snr
 
 # Helpers
 from QPrism.Audio.helpers.audio_to_array import to_array
@@ -157,7 +156,7 @@ class Audio_DQM:
 
         with open('audio_metrics.csv', 'w') as file:
             header = ['Audio Name', 'Length',
-                      'Sample Rate', 'Voices', 'SNR', 'RMS']
+                      'Sample Rate', 'Voices', 'RMS']
             writer = csv.writer(file)
             writer.writerow(header)
 
@@ -173,7 +172,7 @@ class Audio_DQM:
             data_row.append(self.audio_classify(audio))
             data_row.append(self.root_mean_square(audio))
 
-            data_series = pd.Series(data_row, index=metrics.columns)
+            data_series = pd.Series(data_row, index=header)
             metrics = metrics.append(data_series, ignore_index=True)
 
         print('Metrics saved to ', csv_path)
