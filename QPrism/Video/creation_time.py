@@ -26,5 +26,5 @@ def creation_time(video_path):
     try:
         time = mydata['format']['tags']['creation_time']
     except(KeyError):
-        time = 'Creation time not availale for this video'
+        time = 'N/A'
     return str(time).split('.')[0]
