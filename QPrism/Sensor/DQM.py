@@ -391,7 +391,7 @@ class DQM_multiple_record:
                     if key not in multi_metrics_only:
                         self.individual_fields.append(key)
         for record in self.data_list:
-            single_DQM = DQM_single_file()
+            single_DQM = DQM_single_record()
             single_DQM.set_input_data(record)
             for key in single_metrics:
                 if key not in self.individual_fields:
