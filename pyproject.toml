@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "QPrism"
-version = "0.1.9"
+version = "0.2.7"
 authors = [
   { name="Ramzi Halabi" },
   { name="Zixiong Lin"},
@@ -25,7 +25,7 @@ dependencies = [
   "pandas==1.2.4",
   "numpy>=1.17.3",
   "opencv-python==4.5.3.56",
-  "Pillow==9.2.0",
+  "Pillow==9.0.1",
   "torch==1.12.0",
   "tensorflow==2.9.1",
   "tensorflow-hub==0.10.0",
@@ -34,6 +34,7 @@ dependencies = [
   "combo==0.1.3",
   "moviepy==1.0.3",
   "pydub==0.25.1",
+  "imageio==2.21.1",
 ]
 
 packages = [
