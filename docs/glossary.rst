@@ -66,28 +66,30 @@ Consistency
   via RLC, SRC, and VRC.
 
 APD
-  Anomalous Points Density. The ratio of the number of outliers/anomalous data samples by the total number of samples.
+  Anomalous Points Density. The ratio of the number of outliers/anomalous data samples over the total number of samples.
 
 IRLR
-  Interpretable Record Length Ratio. The ratio of the number of interpretable records by the total number of records.
+  Interpretable Record Length Ratio. The ratio of the number of interpretable records over the total number of records.
   A record is interpretable if it satisfies the following: 
   a. Has more than one row of data. 
   b. Has non-decreasing timestamp.
   c. Has non-zero standard deviation on each data channel.
 
 MDR
-  Missing Data Ratio. The ratio of the number of missing data samples by the total number of samples. TBD
+  Missing Data Ratio. The ratio of the number of missing data samples over the total number of samples. 
+  The MDR metric measures the level of discontinuity manifested through skipped data points due to undersampling.
 
 RLC
   Record Length Consistency. The uniformness of data record length across multiple records.
 
 SCR
-  Sensor Channel Ratio. The ratio of the number of records that has full channels by the total number of records.
+  Sensor Channel Ratio. The ratio of the number of records that has full channels over the total number of records.
   A record is defined to have full channels if the number of its channels is the same as the mode of the number of channels
   of given input. 
 
 SNR
-  Signal-to-noise Ratio. The ratio of desired signal amplitude by the noise amplitude.
+  Signal-to-noise Ratio. The ratio of desired signal amplitude over the noise amplitude.
+  This metric gives insight into the noise level rather than its type, providing feedback on the required level of data denoising. 
 
 SRC
   Sampling Rate Consistency. The uniformness of the data sampling rate within a record.
@@ -96,4 +98,4 @@ VRC
   Value Range Consistency. The uniformness of the value range across multiple records.
 
 VDR
-  Valid Data Ratio. The ratio of the number of non-NaN data points by the total number of data points. 
+  Valid Data Ratio. The ratio of the number of non-NaN data points over the total number of data points. 
