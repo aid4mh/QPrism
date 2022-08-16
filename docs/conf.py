@@ -5,11 +5,11 @@ sys.path.insert(0, os.path.abspath('..'))
 # -- Project information
 
 project = 'QPrism'
-copyright = 'TBD'
+copyright = 'CAMH / Krembil Center of Neuroinformatics'
 author = 'Ramzi Halabi, Zixiong Lin, Rahavi Selvarajan, Jana Kabrit'
 
-release = '0.1.8'
-version = '0.1.8'
+release = '0.2.7'
+version = '0.2.7'
 
 # -- General configuration
 

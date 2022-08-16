@@ -4,19 +4,47 @@ Glossary
 Audio Module
 ------------
 
+Length
+  The length of the audio(s), in seconds.
+
+Sample Rate:
+  The sample rate of the audio(s), in Hertz.
+
+Sound:
+  The detected sounds in the audio(s).
+
 RMS
-   RMS level (root mean squared) of an audio is proportional to the amount of energy over a period of time in the signal.
-   This can be used to distinguish audios that are louder from each other.
+  RMS level (root mean squared) of the audio(s) is proportional to the amount of energy over a period of time in the signal.
+  This can be used to distinguish audios that are louder from each other.
 
 
 Video Module
 ------------
 
-word
-  explanation
+Length
+  The length of the video(s), in seconds.
 
-word
-  explanation
+Resolution
+  The resolution of the video(s), in pixels.
+
+Format
+  The format of the video(s).
+
+Bitrate
+  The bit rate of the video(s), in bits.
+
+Framerate
+  The frame rate of the video(s), in frames.
+
+Illumination(Brightness)
+  The brightness of the video(s), in luminance.
+
+Date of Creation
+  The creation date of the video(s), it is the creation date of the media instead of the actual file. 
+  If this part is missing in the metadata, the module will return N/A.
+
+Presence of Artifacts
+  The ratio of distorted frames in the video by the total number of frames.
 
 Sensor Module
 -------------
