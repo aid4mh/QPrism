@@ -22,7 +22,23 @@ Since pip does not resolve the dependencies' version efficiently, please install
    $ pip install --no-deps QPrism
 
 Examples
-----------------
+--------
 
-To be filled in after publish the package and finalized the demos
+We have provided detailed demo notebooks for each submodule.
+
+Sensor
+^^^^^^
+   | Demo for QA a single record can be accessed [here](https://github.com/aid4mh/QPrism/blob/main/tests/Sensor/single_record_Demo.ipynb).
+   | Demo for QA multiple records in a directory can be accessed [here](https://github.com/aid4mh/QPrism/blob/main/tests/Sensor/multi_record_Demo.ipynb).
+   | We have also provided demos that can validate the integrity of our DQM metrics, those demos can be accessed in the test folder at 
+     [here](https://github.com/aid4mh/QPrism/blob/main/tests/Sensor/), any notebook with the name <DQM_name>_testing.ipynb is the validation demo.
+   | We have a [code template](https://github.com/aid4mh/QPrism/blob/main/tests/Sensor/demo_sensor.py) that the user can use with minor modifications 
+     to the input data.
+Video
+^^^^^
+   | Demo for QA video(s) can be accessed [here](https://github.com/aid4mh/QPrism/blob/main/tests/Video/video_demo.ipynb)
+Audio
+^^^^^
+   | Demo for QA audio(s) can be accessed [here](https://github.com/aid4mh/QPrism/blob/main/tests/Audio/audio_demo.ipynb)
+
 
