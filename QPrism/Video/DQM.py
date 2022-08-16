@@ -321,7 +321,7 @@ class Video_DQM:
             data_row.append(self.object_detection(video, modelname))
             data_row.append(self.check_artifacts(video))
 
-            data_series = pd.Series(data_row, index=metrics.columns)
+            data_series = pd.Series(data_row, index=header)
             metrics = metrics.append(data_series, ignore_index=True)
         
         print('Metrics saved to ', csv_path)
