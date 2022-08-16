@@ -19,7 +19,7 @@ MDR
   The ratio of missing data points over the total number of record points for all sensor types. 
   The MDR metric measures the level of discontinuity manifested through skipped data points due to undersampling, calculated as:
   :math:`MDR = \frac{MPC}{TPC}`, where :math:`MPC`` is the missing point count, and :math:`TPC` is the total point count.
-  :math:`MPC += \frac{t(n+1)-t(n)}{\hat{t_{s}}} - 1`, :math:`if: t(n+1)-t(n) \geq 2\hat{t_{s}}`, :math:`\hat{t_{s} = mode(t_s)`. 
+  :math:`MPC += \frac{t(n+1)-t(n)}{\hat{t_{s}}} - 1`, :math:`if: t(n+1)-t(n) \geq 2\hat{t_{s}}`, and :math:`\hat{t_{s}} = mode(t_s)`. 
   Where :math:`t(n)` is the timestamp of point :math:`n`, :math:`t_s` is the sampling interval, and :math:`\hat{t_{s}` is the data-driven sampling interval calculated as the most frequent time interval.
   This type of data missingness quantifies the level of information loss, guiding the need for appropriate data resampling and interpolation methods. 
 
