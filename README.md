@@ -35,10 +35,10 @@ The full documentation for QPrism can be accessed [here](https://qprism.readthed
 
 ## Examples:
 
-We have provided throughout demo notebooks in Google Colab covered all functions.
-The notebooks can be accessed [here](https://github.com/aid4mh/QPrism/tree/main/tests).
+We have provided throughout demo notebooks in Google Colab covered all functions. \
+The notebooks can be accessed [here](https://github.com/aid4mh/QPrism/tree/main/tests). \
 Note: In the sensor folder, it also contains notebooks that can validate each metric we have created,
-and a script demo that can be adopted by user with minor modifications.
+and a script demo that can be adopted by user with minor modifications. \
 Detailed explanation for the provided examples can be found in the [documentation](https://qprism.readthedocs.io/en/latest/)
 
 
@@ -47,7 +47,8 @@ We welcome and encourage project contributions! Please see the [CONTRIBUTING.md]
 
 ## Acknowledgments
 
-Supported by CAMH / Krembil Center of Neuroinformatics
+Supported by CAMH / Krembil Center of Neuroinformatics. \
+The authors also like to acknowledge Aditi Surendra for designing the module function illustration.
 
 ## Authors
 - [@Ramzi Halabi](https://github.com/RamziHalabi)
