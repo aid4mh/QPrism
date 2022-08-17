@@ -21,7 +21,7 @@ class Audio_DQM:
         self.aud_metrics = ['classification', 'audio_length', 'sample_rate', 'rms'
                             'signal_to_noise']
 
-    def length(self, path: str):
+    def observation_duration(self, path: str):
         """
         Get the length of the audio
 
@@ -51,7 +51,7 @@ class Audio_DQM:
         else:
             return audio_length(path)
 
-    def sample_rate(self, path: str):
+    def sampling_rate(self, path: str):
         """
         Get the sample rate of the audio
 
@@ -80,7 +80,7 @@ class Audio_DQM:
         else:
             return sample_rate(path)
 
-    def audio_classify(self, path: str):
+    def voice_classification(self, path: str):
         """
         Get a list of all the sounds in an audio
 
@@ -108,11 +108,11 @@ class Audio_DQM:
         else:
             return audio_classification(path)
 
-    def root_mean_square(self, path: str):
+    def energy_RMS(self, path: str):
         """
-        Compute the RMS level of the audio.
+        Compute the energy RMS level of the audio.
 
-        Returns the RMS level of the input audio if the input path is a file.
+        Returns the energy RMS level of the input audio if the input path is a file.
         Returns a dict matching the input audio files to their RMS level if the input path is a folder.
        
         Parameters

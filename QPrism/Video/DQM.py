@@ -27,7 +27,7 @@ class Video_DQM:
                         'video_format', 'video_length', 'video_resolution']
 
 
-    def length(self, path:str):
+    def duration(self, path:str):
         """
         This function gives the length for both a folder of audios or a single audio file.
 
@@ -201,7 +201,7 @@ class Video_DQM:
             return fps(path)
 
 
-    def brightness(self, path:str):
+    def illumination(self, path:str):
         """
         This function gives the brightness of the video.
 
@@ -226,7 +226,7 @@ class Video_DQM:
             return video_brightness(path)
 
 
-    def time_created(self, path:str):
+    def creation_time(self, path:str):
         """
         This function gets the creation time of a video.
 
@@ -252,11 +252,11 @@ class Video_DQM:
             return creation_time(path)
 
 
-    def check_artifacts(self, path:str):
+    def artifacts_ratio(self, path:str):
         """
         This function gets how much of the video that contains video artifacts
 
-        Returns the percentage of the video that contains artifacts (motion blur, too grainy, static) if the input path is a file.
+        Returns the ratio of the video that contains artifacts (motion blur, too grainy, static) if the input path is a file.
         Returns a dict mathing the input videos to their artifacts percentage if the input path is a folder.
 
         Parameters
@@ -312,14 +312,14 @@ class Video_DQM:
 
             data_row.append(str(Path(video).stem))
             data_row.append(self.bit_rate(video))
-            data_row.append(self.brightness(video))
-            data_row.append(self.time_created(video))
+            data_row.append(self.illumination(video))
+            data_row.append(self.creation_time(video))
             data_row.append(self.framerate(video))
             data_row.append(self.format(video))
-            data_row.append(self.length(video))
+            data_row.append(self.duration(video))
             data_row.append(self.resolution(video))
             data_row.append(self.object_detection(video, modelname))
-            data_row.append(self.check_artifacts(video))
+            data_row.append(self.artifacts_ratio(video))
 
             data_series = pd.Series(data_row, index=header)
             metrics = metrics.append(data_series, ignore_index=True)
