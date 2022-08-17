@@ -155,8 +155,8 @@ class Audio_DQM:
             audio_files = [os.path.abspath(path)]
 
         with open('audio_metrics.csv', 'w') as file:
-            header = ['Audio Name', 'Length',
-                      'Sample Rate', 'Voices', 'RMS']
+            header = ['Audio Name', 'Observation Duration',
+                      'Sampling Rate', 'Voice Classification', 'Energy RMS']
             writer = csv.writer(file)
             writer.writerow(header)
 

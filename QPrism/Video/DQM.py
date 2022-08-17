@@ -299,8 +299,8 @@ class Video_DQM:
             video_files = [os.path.abspath(path)]
 
         with open('video_metrics.csv', 'w') as file:
-            header = ['Video Name', 'Bit Rate', 'Brightness', 'Date of Creation', 'Frame Rate', \
-                        'Format', 'Length', 'Resolution', 'Objects', 'Artifacts']
+            header = ['Video Name', 'Bit Rate', 'Illumination', 'Date of Creation', 'Frame Rate', \
+                        'Format', 'Duration', 'Resolution', 'Object Detection', 'Artifacts Ratio']
             writer = csv.writer(file)
             writer.writerow(header)
 
