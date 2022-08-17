@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "QPrism"
-version = "0.2.9"
+version = "0.3.1"
 authors = [
   { name="Ramzi Halabi" },
   { name="Zixiong Lin"},
@@ -20,7 +20,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-keywords = ["sensor", "audio", "video", "quality assessment", "qprism"]
+keywords = ["sensor", "audio", "video", "quality assessment", "QPrism"]
 dependencies = [
   "pandas==1.2.4",
   "numpy>=1.17.3",
