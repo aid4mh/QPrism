@@ -47,6 +47,7 @@ We welcome and encourage project contributions! Please see the [CONTRIBUTING.md]
 
 ## Acknowledgments
 
+Supported by CAMH / Krembil Center of Neuroinformatics
 
 ## Authors
 - [@Ramzi Halabi](https://github.com/RamziHalabi)
