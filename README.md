@@ -37,11 +37,13 @@ The full documentation for QPrism can be accessed [here](https://qprism.readthed
 
 We have provided throughout demo notebooks in Google Colab covered all functions.
 The notebooks can be accessed [here](https://github.com/aid4mh/QPrism/tree/main/tests).
-Note: In the sensor folder, it also contains notebooks that can validate each metric we have created.
+Note: In the sensor folder, it also contains notebooks that can validate each metric we have created,
+and a script demo that can be adopted by user with minor modifications.
+Detailed explanation for the provided examples can be found in the [documentation](https://qprism.readthedocs.io/en/latest/)
 
 
 ## Contributing to the project
-
+We welcome and encourage project contributions! Please see the [CONTRIBUTING.md](https://github.com/aid4mh/QPrism/blob/main/CONTRIBUTING.md) for details.
 
 ## Acknowledgments
 
@@ -51,12 +53,6 @@ Note: In the sensor folder, it also contains notebooks that can validate each me
 - [@RahaviSelvarajan](https://github.com/RahaviSelvarajan)
 - [@Jana-kabrit](https://github.com/Jana-kabrit)
 - [@ZixiongLin1](https://github.com/ZixiongLin1)
-
-
-## Contact 
-
-- to report issues 
-- to seek support
 
 
 ## License
