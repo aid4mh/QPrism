@@ -26,12 +26,14 @@ Contents
 Acknowledgements
 ----------------
 
-Fill in the acknowledgements
+Supported by CAMH / Krembil Center of Neuroinformatics. 
+
+The authors also like to acknowledge Aditi Surendra for designing the module function illustration.
 
 Contribution
 ------------
 
-Fill in how the community can contribute to the project, how to report an issue, etc
+We welcome and encourage project contributions! Please see the `here <https://github.com/aid4mh/QPrism/blob/main/CONTRIBUTING.md>`_ for details.
 
 License
 -------
