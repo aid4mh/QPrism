@@ -167,10 +167,10 @@ class Audio_DQM:
             data_row = []
 
             data_row.append(str(Path(audio).stem))
-            data_row.append(self.length(audio))
-            data_row.append(self.sample_rate(audio))
-            data_row.append(self.audio_classify(audio))
-            data_row.append(self.root_mean_square(audio))
+            data_row.append(self.observation_duration(audio))
+            data_row.append(self.sampling_rate(audio))
+            data_row.append(self.voice_classification(audio))
+            data_row.append(self.energy_RMS(audio))
 
             data_series = pd.Series(data_row, index=header)
             metrics = metrics.append(data_series, ignore_index=True)
