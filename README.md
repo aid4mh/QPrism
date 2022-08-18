@@ -59,6 +59,7 @@ The authors also like to acknowledge Aditi Surendra for designing the module fun
 - [@RahaviSelvarajan](https://github.com/RahaviSelvarajan)
 - [@Jana-kabrit](https://github.com/Jana-kabrit)
 - [@ZixiongLin1](https://github.com/ZixiongLin1)
+- [@apratap](https://github.com/apratap)
 
 
 ## License
