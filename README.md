@@ -50,7 +50,7 @@ We welcome and encourage project contributions! Please see the [CONTRIBUTING.md]
 
 ## Acknowledgments
 
-Supported by CAMH / Krembil Center of Neuroinformatics. 
+The development of QPrism package is supported by Krembil Foundation.
 
 The authors also like to acknowledge Aditi Surendra for designing the module function illustration.
 
