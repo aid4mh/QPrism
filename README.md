@@ -7,7 +7,7 @@ The QPrism Python package serves as a quality assessment toolbox for data collec
 
 ## Installation
 
-The installation can be done with pip. since pip does not resolve the dependencies' version efficiently, please install QPrism with the following steps.
+The installation can be done with pip. Since pip does not resolve the dependencies' version efficiently, please install QPrism with the following steps.
 
   ```
   $ python3 -m pip install --upgrade pip
