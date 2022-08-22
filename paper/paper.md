@@ -1,5 +1,5 @@
 ---
-title: 'QA/QC Pipeline for Video/Audio/Sensor'
+title: 'QPrism: A Python Library for Quality Assessment of Sensor Data Collected in Real-world Settings '
 tags:
   - Visualising sensor data, videos and audios
   - Analyzing sensor data, videos and audios
