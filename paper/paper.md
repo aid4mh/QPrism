@@ -18,6 +18,10 @@ authors:
     affiliation: 1
   - name: Jana Kabrit
     affiliation: 1
+  - name: Calvin Herd
+    affiliation: 1
+  - name: Sophia Li
+    affiliation: 1
   - name: Abhishek Pratap
     affiliation: 1, 2, 3, 4, 5
 affiliations:
