@@ -10,7 +10,7 @@ tags:
   - time series analysis
 authors:
   
-  - name: Ramzi Halabi
+  - name: Ramzi Halabi^[Corresponding author]
     affiliation: 1
   - name: Zixiong Lin
     affiliation: 1
