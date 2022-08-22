@@ -16,7 +16,6 @@ Contents
 --------
 
 .. toctree::
-   overview
    inplementation
    usage
    api
