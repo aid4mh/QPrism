@@ -108,12 +108,12 @@ class Audio_DQM:
         else:
             return audio_classification(path)
 
-    def energy_RMS(self, path: str):
+    def RMS(self, path: str):
         """
-        Compute the energy RMS level of the audio.
+        Compute the RMS value of the audio. This can be used to distinguish audios that are louder from each other.
 
-        Returns the energy RMS level of the input audio if the input path is a file.
-        Returns a dict matching the input audio files to their RMS level if the input path is a folder.
+        Returns the root mean squared value of the audio file(s).
+        Returns a dict matching the input audio files to their RMS value if the input path is a folder.
        
         Parameters
         -----------
@@ -170,7 +170,7 @@ class Audio_DQM:
             data_row.append(self.observation_duration(audio))
             data_row.append(self.sampling_rate(audio))
             data_row.append(self.voice_classification(audio))
-            data_row.append(self.energy_RMS(audio))
+            data_row.append(self.RMS(audio))
 
             data_series = pd.Series(data_row, index=header)
             metrics = metrics.append(data_series, ignore_index=True)
