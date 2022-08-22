@@ -4,12 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "QPrism"
-version = "0.3.2"
+version = "0.3.3"
 authors = [
   { name="Ramzi Halabi" },
   { name="Zixiong Lin"},
   { name="Rahavi Selvarajan"},
   { name="Jana Kabrit"},
+  { name="Abhishek Pratap"},
 ]
 description = "A data quality assessment package"
 readme = "README.md"
