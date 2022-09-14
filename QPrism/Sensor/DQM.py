@@ -406,8 +406,21 @@ class DQM_multiple_record:
                     elif key=='APD':
                         single_DQM.set_APD(False)
             single_DQM.compute_DQM()
-            single_DQM_result = single_DQM.get_DQM()
-            self.individual_score.append(single_DQM_result)
+            single_result = []
+            for key in self.individual_fields:
+                if key=='IRLR':
+                    single_result.append(single_DQM.get_IRLR())
+                if key=='SNR':
+                    single_result.append(single_DQM.get_SNR())
+                if key=='VDR':
+                    single_result.append(single_DQM.get_VDR())
+                if key=='SRC':
+                    single_result.append(single_DQM.get_SRC())
+                if key=='MDR':
+                    single_result.append(single_DQM.get_MDR())
+                if key=='APD':
+                    single_result.append(single_DQM.get_APD())
+            self.individual_score.append(single_result)
         self.etime = time.time()
         print("The total time for computing the DQM is: " + str(self.etime-self.stime) + ' seconds.')
     
