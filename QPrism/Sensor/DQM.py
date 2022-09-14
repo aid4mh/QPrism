@@ -38,8 +38,9 @@ class DQM_single_record:
 
         Parameters
         ----------
-        path : str
-            Path to the input record file
+        df : pd.DataFrame
+            A dataframe represents a single record,
+            all entries in the dataframe should be able to convert to float in order to compute the DQM. 
         """
         self.data_list_pd = df
     
@@ -252,7 +253,8 @@ class DQM_multiple_record:
         Parameters
         ----------
         df_list : list of pd.DataFrame
-            A list of dataframe, each dataframe represents a single record
+            A list of dataframe, each dataframe represents a single record,
+            all entries in the dataframe should be able to convert to float in order to compute the DQM. 
         """
         self.data_list = df_list
     
