@@ -34,6 +34,8 @@ Sensor
      `here <https://github.com/aid4mh/QPrism/blob/main/tests/Sensor/>`_, any notebook with the name <DQM_name>_testing.ipynb is the validation demo.
    | We have a `code template <https://github.com/aid4mh/QPrism/blob/main/tests/Sensor/demo_sensor.py>`_ that the user can use with minor modifications 
      to the input data.
+   | Note that the input dataframe should only contains numerical values. If there are non-numerical values, either a timestamp or a text entry,
+     please refer `here <https://github.com/aid4mh/QPrism/blob/main/tests/Sensor/Non_numerical_record.ipynb>`_ for an example of solution.
 Video
 ^^^^^
    | Demo for QA video(s) can be accessed `here <https://github.com/aid4mh/QPrism/blob/main/tests/Video/video_demo.ipynb>`_.

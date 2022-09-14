@@ -21,3 +21,4 @@ Sensor
 .. toctree::
    DQM_single_file
    DQM_multiple_file
+   sensor_helper
