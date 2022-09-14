@@ -29,11 +29,15 @@ We have provided detailed demo notebooks for each submodule.
 Sensor
 ^^^^^^
    | Demo for QA a single record can be accessed `here <https://github.com/aid4mh/QPrism/blob/main/tests/Sensor/single_record_Demo.ipynb>`_.
+   |
    | Demo for QA multiple records in a directory can be accessed `here <https://github.com/aid4mh/QPrism/blob/main/tests/Sensor/multi_record_Demo.ipynb>`_.
-   | We have also provided demos that can validate the integrity of our DQM metrics, those demos can be accessed in the test folder at 
+   |
+   | We have also provided demos that can validate the integrity of our DQM metrics, those demos can be accessed in the test folder at
      `here <https://github.com/aid4mh/QPrism/blob/main/tests/Sensor/>`_, any notebook with the name <DQM_name>_testing.ipynb is the validation demo.
-   | We have a `code template <https://github.com/aid4mh/QPrism/blob/main/tests/Sensor/demo_sensor.py>`_ that the user can use with minor modifications 
+   |
+   | We have a `code template <https://github.com/aid4mh/QPrism/blob/main/tests/Sensor/demo_sensor.py>`_ that the user can use with minor modifications
      to the input data.
+   |
    | Note that the input dataframe should only contains numerical values. If there are non-numerical values, either a timestamp or a text entry,
      please refer `here <https://github.com/aid4mh/QPrism/blob/main/tests/Sensor/Non_numerical_record.ipynb>`_ for an example of solution.
 Video
