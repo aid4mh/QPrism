@@ -6,7 +6,7 @@ from QPrism.Sensor.pipeline_functions.single_function_DQMs import *
 
 
 def compute_MDR_single(record_df):
-    sample_consistence, sample_rate_median, sample_mode = sampling_rate_consistency(record_df)
+    sample_consistence, sample_mode = sampling_rate_consistency(record_df)
     MDR = count_missing_segments(record_df, sample_mode)
     return MDR
 

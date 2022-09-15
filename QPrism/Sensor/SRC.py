@@ -5,8 +5,8 @@ from QPrism.Sensor.pipeline_functions.single_function_DQMs import sampling_rate_
 
 
 def compute_SRC_single(record_df):
-    sample_consistence, sample_rate_median, sample_mode = sampling_rate_consistency(record_df)
-    return sample_consistence
+    SRC, sampling_mode = sampling_rate_consistency(record_df)
+    return SRC
 
 
 def compute_SRC_multiple(data_list):

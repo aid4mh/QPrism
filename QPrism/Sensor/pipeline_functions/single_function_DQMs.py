@@ -57,7 +57,14 @@ def sampling_rate_consistency(record):
     #record = normalize_timestamp(record, ((list(record.keys()))[0]))
     sampling = [record.iloc[i+1][(list(record.keys()))[0]] - record.iloc[i][(list(record.keys()))[0]] for i in range(len(record) - 1)]
     sampling_trunc = [round(r, 3) for r in sampling]
-    return consistency(sampling), np.median(sampling), mode(sampling_trunc)
+    sampling_mode = mode(sampling_trunc)
+    total_sampling_gap = len(sampling_trunc)
+    abnormal_sampling_gap_count = 0
+    for sampling_rate in sampling_trunc:
+        if (sampling_rate!=sampling_mode):
+            abnormal_sampling_gap_count += 1
+    SRC = 1-(abnormal_sampling_gap_count/total_sampling_gap)
+    return SRC, sampling_mode
 
 
 def count_missing_segments(record, sample_mode):
