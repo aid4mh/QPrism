@@ -8,8 +8,8 @@ project = 'QPrism'
 copyright = 'CAMH / Krembil Center of Neuroinformatics'
 author = 'Ramzi Halabi, Zixiong Lin, Rahavi Selvarajan, Jana Kabrit, Abhishek Pratap'
 
-release = '0.3.6'
-version = '0.3.6'
+release = '0.4.0'
+version = '0.4.0'
 
 # -- General configuration
 

@@ -53,9 +53,9 @@ RLC
   where :math:`sig(x)` is the sigmoid function, :math:`\sigma_{RL}` is the standard deviation of record lengths, and :math:`\overline{RL}` is the mean record length. The higher RLC is, the less the burden of data segmentation and preprocessing is before the analysis. 
 
 SRC
-  The inverse of the coefficient of variation of the sampling intervals across sensors with the sampling interval as the difference between two consecutive data point timestamps, calculated as:
-  :math:`SRC = 2(1 - sig(\frac{\sigma_{t_s}}{\overline{t_s}}))`, where :math:`sig(x)` is the sigmoid function, :math:`\sigma_{t_s}` is the standard deviation of sampling rates,
-  and :math:`\overline{t_s}` is the mean sampling rate. SRC provides a measure of the stability of data discretization,
+  The ratio of mode sampling rate by the total number of sampling rate, calculated as:
+  :math:`SRC = \frac{MSC}{SC}`, :math:`MSC += 1`, if there is a sampling rate equals to mode samplint rate, and :math:`SC` is the total sampling rate count.
+  SRC provides a measure of the stability of data discretization,
   hence the level of sampling continuity and uniformity. The higher SRC is, the less the risk of information loss is.
 
 VRC
