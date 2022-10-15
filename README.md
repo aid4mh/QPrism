@@ -7,6 +7,20 @@ The QPrism Python package serves as a quality assessment toolbox for data collec
 
 ## Installation
 
+For installation of the QPrism package, please first install and create a virtual environment using the following commands.
+
+  ```
+  python3 -m pip install --user virtualenv
+  ```
+  
+  ```
+  python3 -m venv QPrism
+  ```
+  
+  ```
+  source QPrism/bin/activate
+  ```
+
 The installation can be done with pip. Since pip does not resolve the dependencies' version efficiently, please install QPrism with the following steps.
 
   ```
