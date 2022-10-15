@@ -5,7 +5,20 @@ Usage
 
 Installation
 ------------
+For installation of the QPrism package, please first install and create a virtual environment using the following commands.
 
+.. code-block:: console
+
+   $ python3 -m pip install --user virtualenv
+
+.. code-block:: console
+
+   $ python3 -m venv QPrism
+
+.. code-block:: console
+
+   $ source QPrism/bin/activate
+   
 To use QPrism, the installation can be done with pip.
 Since pip does not resolve the dependencies' version efficiently, please install QPrism with the following steps.
 
